@@ -22,28 +22,25 @@
   <section id="atelier">
     <h2>L'atelier</h2>
     <p>
-      Situé à La chaussée Tirancourt, notre atelier est équipé pour tous types
-      de travaux : découpe, soudure, pliage… Nous disposons d'un cisailleuse,
-      d'une scie à ruban, de deux presses-plieuses, d'une poinçonneuse, pour la
-      mise en forme. Pour le soudage nous possédons deux postes MIG et un poste
-      TIG AC/DC. Et pour la finition, nous avons une cabine de peinture, ainsi
-      que la possibilité de passiver les pièces inox.
+      Situé à La chaussée Tirancourt, notre atelier est équipé pour tous types de travaux : découpe, soudure, pliage…<br />
+      Nous disposons d'une cisaille, d'une scie à ruban, de deux presses-plieuses, d'une poinçonneuse, pour la mise en forme.<br />
+      Pour le soudage, nous possédons deux postes MIG et un poste TIG AC/DC.<br />
+      Pour la finition, nous avons une cabine de peinture, ainsi que la possibilité de passiver les pièces inox.
     </p>
   </section>
 
   <section id="galerie">
-  <h2>Galerie</h2>
-  <img class="imagePleinEcran" src="image/facade_entreprise.png" alt="entreprise" width="300">
-  <img class="imagePleinEcran" src="image/carter_inox.jpeg" alt="carter de protection" width="300">
-  <img class="imagePleinEcran" src="image/garde-corps_volute.jpeg" alt="garde-corps" width="300">
-</section>
+    <h2>Galerie</h2>
+    <img class="imagePleinEcran" src="image/facade_entreprise.png" alt="entreprise" />
+    <img class="imagePleinEcran" src="image/carter_inox.jpeg" alt="carter de protection" />
+    <img class="imagePleinEcran" src="image/garde-corps_volute.jpeg" alt="garde-corps" />
+  </section>
 
-<!-- Fenêtre de plein écran -->
-<div id="fullscreenContainer" style="display:none;">
-  <button id="btnQuitterPleinEcran">✖</button>
-  <img id="fullscreenImage" src="" alt="">
-</div>
-
+  <!-- Plein écran personnalisé -->
+  <div id="fullscreenContainer" style="display:none;">
+    <button id="btnQuitterPleinEcran">✖</button>
+    <img id="fullscreenImage" src="" alt="" />
+  </div>
 
   <section id="contact">
     <h2>Contactez-nous</h2>
@@ -59,6 +56,7 @@
 
       <button type="submit">Envoyer</button>
     </form>
+
     <div class="infos-contact">
       <p>📞 Téléphone : <a href="tel:0322528546">03 22 52 58 46</a></p>
       <p>✉️ Email : <a href="mailto:cs2t@orange.fr">cs2t@orange.fr</a></p>
@@ -75,50 +73,48 @@
     <p>&copy; 2025 SARL CS2T. Tous droits réservés.</p>
   </footer>
 
-  <button id="btnQuitterPleinEcran" title="Fermer le plein écran">✖</button>
-
+  <!-- Script plein écran -->
   <script>
-document.addEventListener('DOMContentLoaded', () => {
-  const images = document.querySelectorAll('.imagePleinEcran');
-  const container = document.getElementById('fullscreenContainer');
-  const fullscreenImage = document.getElementById('fullscreenImage');
-  const btnQuitter = document.getElementById('btnQuitterPleinEcran');
+    document.addEventListener('DOMContentLoaded', () => {
+      const images = document.querySelectorAll('.imagePleinEcran');
+      const container = document.getElementById('fullscreenContainer');
+      const fullscreenImage = document.getElementById('fullscreenImage');
+      const btnQuitter = document.getElementById('btnQuitterPleinEcran');
 
-  images.forEach(img => {
-    img.style.cursor = 'pointer';
+      images.forEach(img => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+          fullscreenImage.src = img.src;
+          container.style.display = 'flex';
+          if (container.requestFullscreen) {
+            container.requestFullscreen();
+          } else if (container.webkitRequestFullscreen) {
+            container.webkitRequestFullscreen();
+          } else if (container.msRequestFullscreen) {
+            container.msRequestFullscreen();
+          }
+        });
+      });
 
-    img.addEventListener('click', () => {
-      fullscreenImage.src = img.src;
-      container.style.display = 'flex';
-      if (container.requestFullscreen) {
-        container.requestFullscreen();
-      } else if (container.webkitRequestFullscreen) {
-        container.webkitRequestFullscreen();
-      } else if (container.msRequestFullscreen) {
-        container.msRequestFullscreen();
-      }
+      btnQuitter.addEventListener('click', () => {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
+        }
+        container.style.display = 'none';
+        fullscreenImage.src = '';
+      });
+
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement) {
+          container.style.display = 'none';
+          fullscreenImage.src = '';
+        }
+      });
     });
-  });
-
-  btnQuitter.addEventListener('click', () => {
-    if (document.exitFullscreen) {
-      document.exitFullscreen();
-    } else if (document.webkitExitFullscreen) {
-      document.webkitExitFullscreen();
-    } else if (document.msExitFullscreen) {
-      document.msExitFullscreen();
-    }
-    container.style.display = 'none';
-    fullscreenImage.src = '';
-  });
-
-  document.addEventListener('fullscreenchange', () => {
-    if (!document.fullscreenElement) {
-      container.style.display = 'none';
-      fullscreenImage.src = '';
-    }
-  });
-});
-</script>
+  </script>
 </body>
 </html>
