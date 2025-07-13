@@ -1,5 +1,5 @@
 /* --- POLICE & BASE --- */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 
 * {
   margin: 0;
@@ -8,10 +8,11 @@
 }
 
 body {
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   background-color: #f4f4f4;
   color: #333;
   line-height: 1.6;
+  min-height: 100vh;
 }
 
 /* --- HEADER --- */
@@ -81,17 +82,17 @@ section h2 {
   gap: 20px;
 }
 
-#galerie img {
+#galerie img.imagePleinEcran {
   width: 100%;
   height: auto;
   border-radius: 8px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
 
-#galerie img:hover {
+#galerie img.imagePleinEcran:hover {
   transform: scale(1.03);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
   cursor: pointer;
 }
 
@@ -100,7 +101,7 @@ form {
   background: #fff;
   padding: 30px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 label {
@@ -116,6 +117,9 @@ textarea {
   margin-bottom: 20px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  font-family: inherit;
+  font-size: 1em;
+  resize: vertical;
 }
 
 button[type="submit"] {
@@ -140,6 +144,7 @@ button[type="submit"]:hover {
   padding: 20px;
   border-left: 5px solid #ff8800;
   border-radius: 5px;
+  font-size: 1em;
 }
 
 .infos-contact a {
@@ -154,28 +159,11 @@ button[type="submit"]:hover {
 ul.horaires {
   list-style: none;
   margin-top: 10px;
+  padding-left: 15px;
 }
 
-/* --- BOUTON FERMER PLEIN ÉCRAN --- */
-#btnQuitterPleinEcran {
-  background: rgba(0,0,0,0.6);
-  color: white;
-  font-size: 24px;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  display: none;
-  transition: background 0.3s;
-}
-
-#btnQuitterPleinEcran:hover {
-  background: rgba(0,0,0,0.8);
+ul.horaires li {
+  margin-bottom: 5px;
 }
 
 /* --- FOOTER --- */
@@ -185,4 +173,30 @@ footer {
   text-align: center;
   padding: 20px;
   margin-top: 40px;
+  font-size: 0.9em;
+}
+
+/* --- BOUTON FERMER PLEIN ÉCRAN --- */
+#btnQuitterPleinEcran {
+  display: none;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 24px;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  line-height: 40px;
+  text-align: center;
+  padding: 0;
+  transition: background-color 0.3s;
+}
+
+#btnQuitterPleinEcran:hover {
+  background: rgba(255, 136, 0, 0.9);
 }
