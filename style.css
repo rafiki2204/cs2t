@@ -22,13 +22,30 @@ header p {
   margin-top: 10px;
 }
 
+.logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.logo svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
 nav {
+  position: sticky;
+  top: 0;
   background-color: #34495e;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
   gap: 15px;
   padding: 15px 0;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
 nav a {
@@ -36,8 +53,8 @@ nav a {
   text-decoration: none;
   font-weight: bold;
   padding: 8px 16px;
-  transition: background 0.3s;
   border-radius: 4px;
+  transition: background 0.3s;
 }
 
 nav a:hover {
@@ -47,7 +64,7 @@ nav a:hover {
 section {
   padding: 40px 20px;
   max-width: 1000px;
-  margin: auto;
+  margin: 80px auto 0 auto;
 }
 
 h2 {
@@ -84,7 +101,6 @@ footer {
   padding: 20px;
 }
 
-/* Galerie */
 #galerie {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -103,7 +119,6 @@ footer {
   transform: scale(1.03);
 }
 
-/* Plein écran */
 #fullscreenContainer {
   position: fixed;
   top: 0;
@@ -128,17 +143,22 @@ footer {
   position: absolute;
   top: 20px;
   right: 20px;
-  background: rgba(255,255,255,0.2);
+  background: #ff3b3b;
   color: white;
-  font-size: 28px;
+  font-size: 24px;
   border: none;
   border-radius: 50%;
   width: 45px;
   height: 45px;
   cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  transition: background 0.3s;
 }
 
-/* Contact */
+#btnQuitterPleinEcran:hover {
+  background: #e60000;
+}
+
 .infos-contact {
   margin-top: 30px;
 }
@@ -147,33 +167,19 @@ footer {
   list-style: none;
   padding-left: 0;
 }
-.logo {
-  margin-bottom: 10px;
-}
 
-.logo svg {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-nav {
-  position: sticky;
-  top: 0;
-  background-color: #333; /* couleur de fond du menu */
-  z-index: 1000;
-  padding: 10px 0;
-  text-align: center;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
+/* Responsive pour petits écrans */
+@media screen and (max-width: 600px) {
+  .logo svg {
+    width: 80px;
+    height: auto;
+  }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0 15px;
-  font-weight: bold;
-  transition: color 0.3s;
-}
+  header h1 {
+    font-size: 1.8em;
+  }
 
-nav a:hover {
-  color: #ffc107; /* couleur au survol */
+  header p {
+    font-size: 1em;
+  }
 }
