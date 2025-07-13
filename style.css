@@ -1,130 +1,188 @@
-/* Mise en page générale */
-body {
-  font-family: Arial, sans-serif;
+/* --- POLICE & BASE --- */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+* {
   margin: 0;
   padding: 0;
-  background-color: #f2f2f2;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
   color: #333;
+  line-height: 1.6;
 }
 
-/* En-tête */
+/* --- HEADER --- */
 header {
-  background-color: #0716e1;
+  background-color: #222;
   color: white;
-  padding: 20px;
+  padding: 40px 20px;
   text-align: center;
 }
 
-/* Menu de navigation */
+header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+header p {
+  font-size: 1.2em;
+  color: #ccc;
+}
+
+/* --- NAVIGATION --- */
 nav {
-  background-color: #000000;
-  padding: 10px;
+  background-color: #444;
   text-align: center;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 nav a {
   color: white;
-  margin: 0 15px;
   text-decoration: none;
+  margin: 0 15px;
   font-weight: bold;
+  transition: color 0.3s;
 }
 
 nav a:hover {
-  text-decoration: underline;
+  color: #ff8800;
 }
 
-/* Sections */
+/* --- SECTIONS GÉNÉRALES --- */
 section {
-  padding: 20px;
-  max-width: 900px;
+  padding: 40px 20px;
+  max-width: 1000px;
   margin: auto;
 }
 
-/* Images dans la galerie */
-img {
-  margin: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  max-width: 100%;
-  height: auto;
+section h2 {
+  font-size: 2em;
+  color: #222;
+  margin-bottom: 20px;
+  border-left: 5px solid #ff8800;
+  padding-left: 10px;
 }
 
-/* Pied de page */
-footer {
-  background-color: #000000;
-  color: white;
-  text-align: center;
-  padding: 15px;
-}
-
-form {
-  max-width: 600px;
-  margin: auto;
-  background-color: #fff;
-  padding: 20px;
-  border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.1);
-}
-
-input, textarea {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  margin-bottom: 15px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 1em;
-}
-
-button {
-  background-color: #444;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  font-size: 1em;
-  border-radius: 40px;
-  cursor: pointer;
-}
-
-button:hover {
-  background-color: #666;
-}
-
-#galerie {
-  text-align: center;
-}
-
-#galerie img {
-  margin: 10px;
-  border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0,0,0,0.2);
-  transition: transform 0.3s;
-}
-
-#galerie img:hover {
-  transform: scale(1.05);
-}
-.infos-contact {
-  margin-top: 20px;
-  text-align: center;
+/* --- ATELIER --- */
+#atelier p {
   font-size: 1.1em;
 }
 
+/* --- GALERIE --- */
+#galerie {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+#galerie img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+#galerie img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+  cursor: pointer;
+}
+
+/* --- FORMULAIRE DE CONTACT --- */
+form {
+  background: #fff;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+label {
+  font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button[type="submit"] {
+  background-color: #ff8800;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #e67300;
+}
+
+/* --- INFOS CONTACT --- */
+.infos-contact {
+  margin-top: 30px;
+  background-color: #fdfdfd;
+  padding: 20px;
+  border-left: 5px solid #ff8800;
+  border-radius: 5px;
+}
+
 .infos-contact a {
-  color: #333;
+  color: #222;
   text-decoration: none;
 }
 
 .infos-contact a:hover {
   text-decoration: underline;
 }
-.horaires {
-  list-style-type: none;
-  padding: 0;
-  margin: 10px 0 0 0;
-  font-size: 1em;
+
+ul.horaires {
+  list-style: none;
+  margin-top: 10px;
 }
 
-.horaires li {
-  margin: 4px 0;
+/* --- BOUTON FERMER PLEIN ÉCRAN --- */
+#btnQuitterPleinEcran {
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 24px;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  display: none;
+  transition: background 0.3s;
+}
+
+#btnQuitterPleinEcran:hover {
+  background: rgba(0,0,0,0.8);
+}
+
+/* --- FOOTER --- */
+footer {
+  background-color: #222;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
 }
