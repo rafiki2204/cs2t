@@ -64,19 +64,23 @@
     <p>&copy; 2025 SARL CS2T. Tous droits réservés.</p>
   </footer>
   <script>
-    const img = document.querySelectorAll('imagePleinEcran');
+    document.addEventListener('DOMContentLoaded', () => {
+      const images = document.querySelectorAll('.imagePleinEcran');
 
-    images.forEach(img => {
-      img.style.cursor = 'pointer';
+      images.forEach(img => {
+        img.style.cursor = 'pointer';
 
-      img.addEventListener('click', () => {
-        if (img.requestFullscreen) {
-          img.requestFullscreen();
-        } else if (img.webkitRequestFullscreen) {
-          img.webkitRequestFullscreen();
-        } else if (img.msRequestFullscreen) {
-          img.msRequestFullscreen();
-        }
+        img.addEventListener('click', () => {
+          if (img.requestFullscreen) {
+            img.requestFullscreen();
+          } else if (img.webkitRequestFullscreen) { // Safari
+            img.webkitRequestFullscreen();
+          } else if (img.msRequestFullscreen) { // IE11
+            img.msRequestFullscreen();
+          } else {
+            alert("Votre navigateur ne supporte pas le plein écran.");
+          }
+        });
       });
     });
   </script>
