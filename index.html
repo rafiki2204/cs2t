@@ -78,53 +78,47 @@
   <button id="btnQuitterPleinEcran" title="Fermer le plein écran">✖</button>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-      const images = document.querySelectorAll(".imagePleinEcran");
-      const btnQuitter = document.getElementById("btnQuitterPleinEcran");
+document.addEventListener('DOMContentLoaded', () => {
+  const images = document.querySelectorAll('.imagePleinEcran');
+  const container = document.getElementById('fullscreenContainer');
+  const fullscreenImage = document.getElementById('fullscreenImage');
+  const btnQuitter = document.getElementById('btnQuitterPleinEcran');
 
-      images.forEach((img) => {
-        img.style.cursor = "pointer";
+  images.forEach(img => {
+    img.style.cursor = 'pointer';
 
-        img.addEventListener("click", () => {
-          if (img.requestFullscreen) {
-            img.requestFullscreen();
-          } else if (img.webkitRequestFullscreen) {
-            img.webkitRequestFullscreen();
-          } else if (img.msRequestFullscreen) {
-            img.msRequestFullscreen();
-          }
-        });
-      });
-
-      // Affiche le bouton quand on entre en plein écran
-      document.addEventListener("fullscreenchange", () => {
-        if (document.fullscreenElement) {
-          btnQuitter.style.display = "block";
-        } else {
-          btnQuitter.style.display = "none";
-        }
-      });
-
-      // Gestion pour Safari
-      document.addEventListener("webkitfullscreenchange", () => {
-        if (document.webkitFullscreenElement) {
-          btnQuitter.style.display = "block";
-        } else {
-          btnQuitter.style.display = "none";
-        }
-      });
-
-      // Clique sur le bouton pour quitter le plein écran
-      btnQuitter.addEventListener("click", () => {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-      });
+    img.addEventListener('click', () => {
+      fullscreenImage.src = img.src;
+      container.style.display = 'flex';
+      if (container.requestFullscreen) {
+        container.requestFullscreen();
+      } else if (container.webkitRequestFullscreen) {
+        container.webkitRequestFullscreen();
+      } else if (container.msRequestFullscreen) {
+        container.msRequestFullscreen();
+      }
     });
-  </script>
+  });
+
+  btnQuitter.addEventListener('click', () => {
+    if (document.exitFullscreen) {
+      document.exitFullscreen();
+    } else if (document.webkitExitFullscreen) {
+      document.webkitExitFullscreen();
+    } else if (document.msExitFullscreen) {
+      document.msExitFullscreen();
+    }
+    container.style.display = 'none';
+    fullscreenImage.src = '';
+  });
+
+  document.addEventListener('fullscreenchange', () => {
+    if (!document.fullscreenElement) {
+      container.style.display = 'none';
+      fullscreenImage.src = '';
+    }
+  });
+});
+</script>
 </body>
 </html>
