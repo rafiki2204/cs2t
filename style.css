@@ -156,3 +156,24 @@ footer {
   height: auto;
   display: block;
 }
+nav {
+  position: sticky;
+  top: 0;
+  background-color: #333; /* couleur de fond du menu */
+  z-index: 1000;
+  padding: 10px 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  font-weight: bold;
+  transition: color 0.3s;
+}
+
+nav a:hover {
+  color: #ffc107; /* couleur au survol */
+}
