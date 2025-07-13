@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>SARL CS2T</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
@@ -17,32 +17,53 @@
     <a href="#atelier">L'atelier</a>
     <a href="#galerie">Galerie</a>
     <a href="#contact">Contact</a>
-    </span>
   </nav>
 
   <section id="atelier">
     <h2>L'atelier</h2>
-    <p>Situé à La chaussée Tirancourt, notre atelier est équipé pour tous types de travaux : découpe, soudure, pliage… Nous disposons d'un cisailleuse, d'une scie a ruban, de deux presses-plieuses, d'une poinconneuse, pour la mise en forme. Pour le soudage nous possédons deux poste MIG et d'un poste TIG AC/DC. Et pour la finition, nous avons une cabine de peinture, ainsi que la possibilité de passiver les pieces inox.</p>
+    <p>
+      Situé à La chaussée Tirancourt, notre atelier est équipé pour tous types
+      de travaux : découpe, soudure, pliage… Nous disposons d'un cisailleuse,
+      d'une scie à ruban, de deux presses-plieuses, d'une poinçonneuse, pour la
+      mise en forme. Pour le soudage nous possédons deux postes MIG et un poste
+      TIG AC/DC. Et pour la finition, nous avons une cabine de peinture, ainsi
+      que la possibilité de passiver les pièces inox.
+    </p>
   </section>
 
   <section id="galerie">
     <h2>Galerie</h2>
-    <img class="imagePleinEcran" src="image/facade_entreprise.png" alt="entreprise" width="300">
-    <img class="imagePleinEcran" src="image/carter_inox.jpeg" alt="carter de protection" width="300">
-    <img class="imagePleinEcran" src="image/garde-corps_volute.jpeg" alt="garde-corps" width="300">
+    <img
+      class="imagePleinEcran"
+      src="image/facade_entreprise.png"
+      alt="entreprise"
+      width="300"
+    />
+    <img
+      class="imagePleinEcran"
+      src="image/carter_inox.jpeg"
+      alt="carter de protection"
+      width="300"
+    />
+    <img
+      class="imagePleinEcran"
+      src="image/garde-corps_volute.jpeg"
+      alt="garde-corps"
+      width="300"
+    />
   </section>
 
   <section id="contact">
     <h2>Contactez-nous</h2>
     <form action="https://formspree.io/f/mwpqeljj" method="POST">
-      <label for="nom">Nom :</label><br>
-      <input type="text" id="nom" name="nom" required><br><br>
+      <label for="nom">Nom :</label><br />
+      <input type="text" id="nom" name="nom" required /><br /><br />
 
-      <label for="email">Email :</label><br>
-      <input type="email" id="email" name="email" required><br><br>
+      <label for="email">Email :</label><br />
+      <input type="email" id="email" name="email" required /><br /><br />
 
-      <label for="message">Message :</label><br>
-      <textarea id="message" name="message" rows="5" required></textarea><br><br>
+      <label for="message">Message :</label><br />
+      <textarea id="message" name="message" rows="5" required></textarea><br /><br />
 
       <button type="submit">Envoyer</button>
     </form>
@@ -51,85 +72,67 @@
       <p>✉️ Email : <a href="mailto:cs2t@orange.fr">cs2t@orange.fr</a></p>
       <p>📍 Adresse : 4 rue Vignacourt, 80310 La chaussée Tirancourt</p>
       <p>🕒 Horaires d’ouverture :</p>
-  <ul class="horaires">
-    <li>Lundi – Vendredi : 08h00 – 17h00</li>
-    <li>Samedi et Dimanche : Fermé</li>
-  </ul>
+      <ul class="horaires">
+        <li>Lundi – Vendredi : 08h00 – 17h00</li>
+        <li>Samedi et Dimanche : Fermé</li>
+      </ul>
     </div>
-
   </section>
-
 
   <footer>
     <p>&copy; 2025 SARL CS2T. Tous droits réservés.</p>
   </footer>
-  <button id="btnQuitterPleinEcran" style="
-  display: none;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-  z-index: 1000;
-  background: rgba(0,0,0,0.6);
-  color: white;
-  font-size: 24px;
-  border: none;
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  cursor: pointer;
-  line-height: 40px;
-  text-align: center;
-  padding: 0;
-">✖</button>
+
+  <button id="btnQuitterPleinEcran" title="Fermer le plein écran">✖</button>
+
   <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll('.imagePleinEcran');
-    const btnQuitter = document.getElementById('btnQuitterPleinEcran');
+    document.addEventListener("DOMContentLoaded", () => {
+      const images = document.querySelectorAll(".imagePleinEcran");
+      const btnQuitter = document.getElementById("btnQuitterPleinEcran");
 
-    images.forEach(img => {
-      img.style.cursor = 'pointer';
+      images.forEach((img) => {
+        img.style.cursor = "pointer";
 
-      img.addEventListener('click', () => {
-        if (img.requestFullscreen) {
-          img.requestFullscreen();
-        } else if (img.webkitRequestFullscreen) {
-          img.webkitRequestFullscreen();
-        } else if (img.msRequestFullscreen) {
-          img.msRequestFullscreen();
+        img.addEventListener("click", () => {
+          if (img.requestFullscreen) {
+            img.requestFullscreen();
+          } else if (img.webkitRequestFullscreen) {
+            img.webkitRequestFullscreen();
+          } else if (img.msRequestFullscreen) {
+            img.msRequestFullscreen();
+          }
+        });
+      });
+
+      // Affiche le bouton quand on entre en plein écran
+      document.addEventListener("fullscreenchange", () => {
+        if (document.fullscreenElement) {
+          btnQuitter.style.display = "block";
+        } else {
+          btnQuitter.style.display = "none";
+        }
+      });
+
+      // Gestion pour Safari
+      document.addEventListener("webkitfullscreenchange", () => {
+        if (document.webkitFullscreenElement) {
+          btnQuitter.style.display = "block";
+        } else {
+          btnQuitter.style.display = "none";
+        }
+      });
+
+      // Clique sur le bouton pour quitter le plein écran
+      btnQuitter.addEventListener("click", () => {
+        if (document.exitFullscreen) {
+          document.exitFullscreen();
+        } else if (document.webkitExitFullscreen) {
+          document.webkitExitFullscreen();
+        } else if (document.msExitFullscreen) {
+          document.msExitFullscreen();
         }
       });
     });
-
-    // Affiche le bouton quand on entre en plein écran
-    document.addEventListener('fullscreenchange', () => {
-      if (document.fullscreenElement) {
-        btnQuitter.style.display = 'block';
-      } else {
-        btnQuitter.style.display = 'none';
-      }
-    });
-
-    // Gestion pour Safari
-    document.addEventListener('webkitfullscreenchange', () => {
-      if (document.webkitFullscreenElement) {
-        btnQuitter.style.display = 'block';
-      } else {
-        btnQuitter.style.display = 'none';
-      }
-    });
-
-    // Clique sur le bouton pour quitter le plein écran
-    btnQuitter.addEventListener('click', () => {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-    });
-  });
-</script>
-
+  </script>
 </body>
 </html>
