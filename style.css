@@ -51,7 +51,7 @@ header p {
 nav {
   position: sticky;
   top: 0;
-  background-color: #34495e;
+  background-color: #ff1919;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
