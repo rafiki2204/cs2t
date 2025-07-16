@@ -108,7 +108,7 @@ section {
 
 #galerie img {
   width: 100%;
-  max-width: 320px;
+  max-width: 150px;
   border-radius: 8px;
   transition: transform 0.2s;
 }
