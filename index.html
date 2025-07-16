@@ -63,8 +63,8 @@
     <div class="carousel-container fade-in">
   <button class="carousel-btn prev">⟨</button>
   <div class="carousel-track">
-    <img src="image/carter_inox.jpeg" alt="Carter inox" />
-    <img src="image/garde-corps_volute.jpeg" alt="Garde-corps volute" />
+    <img src="image/carter_inox.jpeg" alt="Carter de protection en inox" />
+    <img src="image/garde-corps_volute.jpeg" alt="Garde-corps en fer forgé voluté" />
   </div>
   <button class="carousel-btn next">⟩</button>
     </div>
@@ -72,10 +72,13 @@
   </section>
 
   <!-- Plein écran personnalisé -->
-  <div id="fullscreenContainer" style="display:none;">
-    <button id="btnQuitterPleinEcran">✖</button>
-    <img id="fullscreenImage" src="" alt="" />
-  </div>
+  <!-- Plein écran personnalisé avec légende -->
+<div id="fullscreenContainer" style="display:none; flex-direction: column; align-items: center; background-color: rgba(0,0,0,0.9); padding: 20px;">
+  <button id="btnQuitterPleinEcran" style="align-self: flex-end; margin-bottom: 10px;">✖</button>
+  <img id="fullscreenImage" src="" alt="" style="max-height: 80vh; max-width: 90vw;" />
+  <p id="fullscreenCaption" style="color: white; font-size: 1.2rem; margin-top: 15px; text-align: center;"></p>
+</div>
+
 
   <!-- Section Contact -->
   <section id="contact" class="fade-in">
@@ -230,6 +233,53 @@ nextBtn.addEventListener('click', () => {
 });
 
 window.addEventListener('resize', updateCarousel);
+// === PLEIN ÉCRAN POUR LE CARROUSEL ===
+images.forEach(img => {
+  img.style.cursor = 'zoom-in';
+  img.addEventListener('click', () => {
+    fullscreenImage.src = img.src;
+    fullscreenContainer.style.display = 'flex';
+    if (fullscreenContainer.requestFullscreen) {
+      fullscreenContainer.requestFullscreen();
+    } else if (fullscreenContainer.webkitRequestFullscreen) {
+      fullscreenContainer.webkitRequestFullscreen();
+    } else if (fullscreenContainer.msRequestFullscreen) {
+      fullscreenContainer.msRequestFullscreen();
+    }
+  });
+});
+
+fullscreenImage.addEventListener('mousemove', (e) => {
+  const rect = fullscreenImage.getBoundingClientRect();
+  const x = ((e.clientX - rect.left) / rect.width) * 100;
+  const y = ((e.clientY - rect.top) / rect.height) * 100;
+  fullscreenImage.style.transformOrigin = `${x}% ${y}%`;
+  fullscreenImage.style.transform = 'scale(2)';
+});
+
+fullscreenImage.addEventListener('mouseleave', () => {
+  fullscreenImage.style.transform = 'scale(1)';
+});
+
+btnQuitter.addEventListener('click', () => {
+  if (document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen();
+  }
+  fullscreenContainer.style.display = 'none';
+  fullscreenImage.src = '';
+});
+
+document.addEventListener('fullscreenchange', () => {
+  if (!document.fullscreenElement) {
+    fullscreenContainer.style.display = 'none';
+fullscreenImage.src = img.src;
+fullscreenCaption.textContent = img.alt || "Image en plein écran";
+  }
+});
 
   </script>
 
