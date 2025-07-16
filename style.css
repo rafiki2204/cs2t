@@ -219,6 +219,26 @@ footer {
   transition: transform 0.1s ease-out;
   transform-origin: center center;
 }
+  #btnScrollTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #1abc9c;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+#btnScrollTop:hover {
+  background: #16a085;
+}
+
 
   header p {
     font-size: 1em;
