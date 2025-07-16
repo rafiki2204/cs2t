@@ -1,98 +1,261 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CS2T - Chaudronnerie</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SARL CS2T</title>
+  <link rel="stylesheet" href="style.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-color: #f4f4f4;
+    html {
+      scroll-behavior: smooth;
     }
-    header {
-      background-color: #1a1a1a;
-      color: white;
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     }
-    nav a {
-      color: white;
-      margin-left: 1rem;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-    section {
-      padding: 4rem 2rem;
-      background-color: white;
-      margin-bottom: 1rem;
-    }
-    h1, h2 {
-      color: #333;
-    }
-    .galerie {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 1rem;
-    }
-    .galerie img {
-      width: 100%;
-      border-radius: 8px;
-    }
-    footer {
-      background-color: #1a1a1a;
-      color: white;
-      text-align: center;
-      padding: 2rem;
+
+    .fade-in-visible {
+      opacity: 1;
+      transform: translateY(0);
     }
   </style>
 </head>
 <body>
+  <!-- En-tête -->
   <header>
-    <div><strong>CS2T</strong> - Chaudronnerie</div>
-    <nav>
-      <a href="#accueil">Accueil</a>
-      <a href="#atelier">Atelier</a>
-      <a href="#galerie">Galerie</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <div class="logo">
+      <svg width="120" height="40" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="100" fill="#111" />
+        <text x="40" y="90" font-family="Arial Black, sans-serif" font-size="48" fill="#ffffff">C</text>
+        <text x="90" y="70" font-family="Arial Black, sans-serif" font-size="36" fill="#ffffff">S</text>
+        <text x="140" y="50" font-family="Arial Black, sans-serif" font-size="26" fill="#ffffff">2</text>
+        <text x="180" y="30" font-family="Arial Black, sans-serif" font-size="20" fill="#ffffff">T</text>
+      </svg>
+    </div>
+    <h1>SARL CS2T</h1>
+    <p>Chaudronnerie & savoir-faire métallique</p>
   </header>
 
-  <section id="accueil">
-    <h1>Bienvenue chez CS2T</h1>
-    <p>Nous sommes spécialisés dans la chaudronnerie sur mesure. Découvrez notre atelier, nos réalisations, et contactez-nous pour vos projets.</p>
+  <!-- Navigation principale -->
+  <nav>
+    <a href="#accueil">Accueil</a>
+    <a href="#atelier">L'atelier</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Section Atelier -->
+  <section id="atelier" class="fade-in">
+    <h2>L'atelier</h2>
+    <p>
+  Situé à La chaussée Tirancourt, notre atelier est équipé pour tous types de travaux : découpe, soudure, pliage…<br />
+  Nous disposons d'une cisaille, d'une scie à ruban, de deux presses-plieuses, d'une poinçonneuse, etc, pour la mise en forme.<br />
+  Pour le soudage, nous possédons deux postes MIG et un poste TIG AC/DC.<br />
+  Pour la finition, nous avons une cabine de peinture, ainsi que la possibilité de passiver les pièces inox.
+</p>
+
+<p><a href="atelier-photos.html" target="_blank" rel="noopener" style="color:#1abc9c; font-weight:bold;">Voir les photos de l'atelier</a></p>
   </section>
 
-  <section id="atelier">
-    <h2>Notre Atelier</h2>
-    <p>L'atelier CS2T est équipé pour tous vos travaux de chaudronnerie. Nous réalisons des pièces uniques ou en série, avec précision et rigueur.</p>
-  </section>
-
-  <section id="galerie">
+  <!-- Section Galerie -->
+  <section id="galerie" class="fade-in">
     <h2>Galerie</h2>
-    <div class="galerie">
-      <img src="image1.jpg" alt="Projet 1">
-      <img src="image2.jpg" alt="Projet 2">
-      <img src="image3.jpg" alt="Projet 3">
+    <div class="galerie-images">
+      <img class="imagePleinEcran" src="image/carter_inox.jpeg" alt="carter de protection" />
+      <img class="imagePleinEcran" src="image/garde-corps_volute.jpeg" alt="garde-corps" />
     </div>
   </section>
 
-  <section id="contact">
-    <h2>Contact</h2>
-    <p>Pour toute demande de devis ou renseignement :</p>
-    <p>Email : contact@cs2t.fr<br>Téléphone : 01 23 45 67 89</p>
+  <!-- Plein écran personnalisé -->
+  <div id="fullscreenContainer" style="display:none;">
+    <button id="btnQuitterPleinEcran">✖</button>
+    <img id="fullscreenImage" src="" alt="" />
+  </div>
+
+  <!-- Section Contact -->
+  <section id="contact" class="fade-in">
+    <h2>Contactez-nous</h2>
+    <form action="https://formspree.io/f/mwpqeljj" method="POST">
+      <label for="nom">Nom :</label><br />
+      <input type="text" id="nom" name="nom" required /><br /><br />
+
+      <label for="email">Email :</label><br />
+      <input type="email" id="email" name="email" required /><br /><br />
+
+      <label for="message">Message :</label><br />
+      <textarea id="message" name="message" rows="5" required></textarea><br /><br />
+
+      <button type="submit">Envoyer</button>
+    </form>
+
+    <div class="infos-contact">
+      <p>📞 Téléphone : <a href="tel:0322528546">03 22 52 58 46</a></p>
+      <p>✉️ Email : <a href="mailto:cs2t@orange.fr">cs2t@orange.fr</a></p>
+      <p>📍 Adresse : 4 rue Vignacourt, 80310 La chaussée Tirancourt</p>
+      <p>🕒 Horaires d’ouverture :</p>
+      <ul class="horaires">
+        <li>Lundi – Vendredi : 08h00 – 17h00</li>
+        <li>Samedi et Dimanche : Fermé</li>
+      </ul>
+    </div>
   </section>
 
+  <!-- Pied de page -->
   <footer>
-    <p>&copy; 2025 CS2T - Tous droits réservés</p>
+    <p>&copy; <span id="copyright-year"></span> SARL CS2T. Tous droits réservés.</p>
   </footer>
+
+  <!-- Script JavaScript -->
+  <script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // PLEIN ÉCRAN
+    const images = document.querySelectorAll('.imagePleinEcran');
+    const container = document.getElementById('fullscreenContainer');
+    const fullscreenImage = document.getElementById('fullscreenImage');
+    const btnQuitter = document.getElementById('btnQuitterPleinEcran');
+
+    images.forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        fullscreenImage.src = img.src;
+        container.style.display = 'flex';
+        if (container.requestFullscreen) {
+          container.requestFullscreen();
+        } else if (container.webkitRequestFullscreen) {
+          container.webkitRequestFullscreen();
+        } else if (container.msRequestFullscreen) {
+          container.msRequestFullscreen();
+        }
+      });
+    });
+
+    fullscreenImage.addEventListener('mousemove', (e) => {
+      const rect = fullscreenImage.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      fullscreenImage.style.transformOrigin = ${x}% ${y}%;
+      fullscreenImage.style.transform = 'scale(2)';
+    });
+
+    fullscreenImage.addEventListener('mouseleave', () => {
+      fullscreenImage.style.transform = 'scale(1)';
+    });
+
+    btnQuitter.addEventListener('click', () => {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      container.style.display = 'none';
+      fullscreenImage.src = '';
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        container.style.display = 'none';
+        fullscreenImage.src = '';
+      }
+    });
+
+    // BOUTON HAUT DE PAGE
+    const btnScrollTop = document.getElementById('btnScrollTop');
+    window.addEventListener('scroll', () => {
+      btnScrollTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+    btnScrollTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // ANNÉE DYNAMIQUE
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+
+    // EFFET FADE-IN
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  });
+  </script>
+
+  <button id="btnScrollTop" title="Remonter">↑</button>
+</body>
+</html> atelier-photos.html: <!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Photos de l'atelier - SARL CS2T</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Photos de l'atelier</h1>
+  </header>
+  
+  <nav>
+  <a href="index.html">Accueil</a>
+  <a href="index.html#atelier">L'atelier</a>
+  <a href="index.html#galerie">Galerie</a>
+  <a href="index.html#contact">Contact</a>
+</nav>
+
+  
+  <section id="atelier-photos">
+    <div class="galerie-ateliers">
+      <img src="image/facade_entreprise.png" alt="entreprise" />
+      <img src="image/cisaille.png" alt="cisaille" />
+      <img src="image/plieuse_rouge.png" alt="plieuse amada" />
+      <img src="image/plieuse_verte.png" alt="plieuse grosse épaisseur" />
+      <img src="image/scie_ruban.png" alt="scie à ruban" />
+      <img src="image/encocheuse.png" alt="encocheuse" />
+      <img src="image/poinconneuse.png" alt="poinçonneuse" />
+    </div>
+  </section>
+<div id="fullscreenContainer" style="display:none;">
+  <button id="btnQuitterPleinEcran" aria-label="Fermer la vue plein écran">&times;</button>
+  <img id="fullscreenImage" src="" alt="Image agrandie" />
+</div>
+<script>
+  // Sélectionne toutes les images dans la galerie
+  const images = document.querySelectorAll('.galerie-ateliers img');
+  const fullscreenContainer = document.getElementById('fullscreenContainer');
+  const fullscreenImage = document.getElementById('fullscreenImage');
+  const btnQuitter = document.getElementById('btnQuitterPleinEcran');
+
+  // Quand on clique sur une image, on affiche la superposition avec l'image agrandie
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      fullscreenImage.src = img.src;
+      fullscreenImage.alt = img.alt;
+      fullscreenContainer.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // désactive scroll page
+    });
+  });
+
+  // Quand on clique sur le bouton fermer, on masque la superposition
+  btnQuitter.addEventListener('click', () => {
+    fullscreenContainer.style.display = 'none';
+    fullscreenImage.src = '';
+    fullscreenImage.alt = '';
+    document.body.style.overflow = ''; // réactive scroll page
+  });
+
+  // Clic sur le fond noir pour fermer aussi
+  fullscreenContainer.addEventListener('click', (e) => {
+    if (e.target === fullscreenContainer) {
+      btnQuitter.click();
+    }
+  });
+</script>
 </body>
 </html>
