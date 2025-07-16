@@ -3,7 +3,7 @@ body {
   margin: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background: #ecf0f1;
-  color: #2c3e50;
+  color: #e93d39;
 }
 
 /* TYPOGRAPHIE */
@@ -16,7 +16,7 @@ h2 {
 
 /* HEADER & LOGO */
 header {
-  background-color: #2c3e50;
+  background-color: #e93d39;
   color: white;
   padding: 40px 20px;
   text-align: center;
