@@ -1,3 +1,4 @@
+/* RESET & BASE GÉNÉRALE */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -5,6 +6,15 @@ body {
   color: #222;
 }
 
+/* TYPOGRAPHIE */
+h2 {
+  border-bottom: 2px solid #1abc9c;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  color: #2c3e50;
+}
+
+/* HEADER & LOGO */
 header {
   background-color: #2c3e50;
   color: white;
@@ -35,6 +45,7 @@ header p {
   display: block;
 }
 
+/* NAVIGATION */
 nav {
   position: sticky;
   top: 0;
@@ -61,46 +72,33 @@ nav a:hover {
   background-color: #1abc9c;
 }
 
+/* SECTIONS GÉNÉRALES */
 section {
   padding: 40px 20px;
   max-width: 1000px;
   margin: 80px auto 0 auto;
 }
 
-h2 {
-  border-bottom: 2px solid #1abc9c;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  color: #2c3e50;
+/* ATELIER */
+#atelier p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-form input, form textarea, form button {
+#atelier img {
   width: 100%;
-  max-width: 500px;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  max-width: 150px;
+  border-radius: 6px;
+  margin: 10px;
+  transition: transform 0.2s;
 }
 
-form button {
-  background-color: #1abc9c;
-  color: white;
-  border: none;
-  cursor: pointer;
+#atelier img:hover {
+  transform: scale(1.03);
 }
 
-form button:hover {
-  background-color: #16a085;
-}
-
-footer {
-  background-color: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
+/* GALERIE */
 #galerie {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -119,6 +117,40 @@ footer {
   transform: scale(1.03);
 }
 
+/* FORMULAIRE DE CONTACT */
+form input,
+form textarea,
+form button {
+  width: 100%;
+  max-width: 500px;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background-color: #1abc9c;
+  color: white;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+form button:hover {
+  background-color: #16a085;
+}
+
+.infos-contact {
+  margin-top: 30px;
+}
+
+.horaires {
+  list-style: none;
+  padding-left: 0;
+}
+
+/* PLEIN ÉCRAN - GALERIE */
 #fullscreenContainer {
   position: fixed;
   top: 0;
@@ -159,16 +191,15 @@ footer {
   background: #e60000;
 }
 
-.infos-contact {
-  margin-top: 30px;
+/* PIED DE PAGE */
+footer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 20px;
 }
 
-.horaires {
-  list-style: none;
-  padding-left: 0;
-}
-
-/* Responsive pour petits écrans */
+/* RESPONSIVE DESIGN */
 @media screen and (max-width: 600px) {
   .logo svg {
     width: 80px;
@@ -183,22 +214,3 @@ footer {
     font-size: 1em;
   }
 }
-
-#atelier img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 6px;
-  margin: 10px;
-  transition: transform 0.2s;
-}
-
-#atelier img:hover {
-  transform: scale(1.03);
-}
-
-#atelier p {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
