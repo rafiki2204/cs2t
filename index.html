@@ -7,10 +7,11 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <!-- En-tête -->
   <header>
     <div class="logo">
       <svg width="120" height="40" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="100" fill="#111"/>
+        <rect width="300" height="100" fill="#111" />
         <text x="40" y="90" font-family="Arial Black, sans-serif" font-size="48" fill="#ffffff">C</text>
         <text x="90" y="70" font-family="Arial Black, sans-serif" font-size="36" fill="#ffffff">S</text>
         <text x="140" y="50" font-family="Arial Black, sans-serif" font-size="26" fill="#ffffff">2</text>
@@ -21,6 +22,7 @@
     <p>Chaudronnerie & savoir-faire métallique</p>
   </header>
 
+  <!-- Navigation principale -->
   <nav>
     <a href="#accueil">Accueil</a>
     <a href="#atelier">L'atelier</a>
@@ -28,6 +30,7 @@
     <a href="#contact">Contact</a>
   </nav>
 
+  <!-- Section Atelier -->
   <section id="atelier">
     <h2>L'atelier</h2>
     <p>
@@ -35,20 +38,25 @@
       Nous disposons d'une cisaille, d'une scie à ruban, de deux presses-plieuses, d'une poinçonneuse, etc, pour la mise en forme.<br />
       Pour le soudage, nous possédons deux postes MIG et un poste TIG AC/DC.<br />
       Pour la finition, nous avons une cabine de peinture, ainsi que la possibilité de passiver les pièces inox.
+    </p>
+    <div class="galerie-ateliers">
       <img class="imagePleinEcran" src="image/facade_entreprise.png" alt="entreprise" />
       <img class="imagePleinEcran" src="image/cisaille.png" alt="cisaille" />
       <img class="imagePleinEcran" src="image/plieuse_rouge.png" alt="plieuse amada" />
       <img class="imagePleinEcran" src="image/plieuse_verte.png" alt="plieuse grosse epaisseur" />
       <img class="imagePleinEcran" src="image/scie_ruban.png" alt="scie à ruban" />
       <img class="imagePleinEcran" src="image/encocheuse.png" alt="encocheuse" />
-      <img class="imagePleinEcran" src="image/poinconneuse.png" alt="poinconneuse" />
-    </p>
+      <img class="imagePleinEcran" src="image/poinconneuse.png" alt="poinçonneuse" />
+    </div>
   </section>
 
+  <!-- Section Galerie -->
   <section id="galerie">
     <h2>Galerie</h2>
-    <img class="imagePleinEcran" src="image/carter_inox.jpeg" alt="carter de protection" />
-    <img class="imagePleinEcran" src="image/garde-corps_volute.jpeg" alt="garde-corps" />
+    <div class="galerie-images">
+      <img class="imagePleinEcran" src="image/carter_inox.jpeg" alt="carter de protection" />
+      <img class="imagePleinEcran" src="image/garde-corps_volute.jpeg" alt="garde-corps" />
+    </div>
   </section>
 
   <!-- Plein écran personnalisé -->
@@ -57,6 +65,7 @@
     <img id="fullscreenImage" src="" alt="" />
   </div>
 
+  <!-- Section Contact -->
   <section id="contact">
     <h2>Contactez-nous</h2>
     <form action="https://formspree.io/f/mwpqeljj" method="POST">
@@ -84,11 +93,12 @@
     </div>
   </section>
 
+  <!-- Pied de page -->
   <footer>
     <p>&copy; 2025 SARL CS2T. Tous droits réservés.</p>
   </footer>
 
-  <!-- Script plein écran -->
+  <!-- Script JavaScript pour affichage plein écran -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
       const images = document.querySelectorAll('.imagePleinEcran');
