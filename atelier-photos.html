@@ -27,5 +27,37 @@
   <button id="btnQuitterPleinEcran" aria-label="Fermer la vue plein écran">&times;</button>
   <img id="fullscreenImage" src="" alt="Image agrandie" />
 </div>
+<script>
+  // Sélectionne toutes les images dans la galerie
+  const images = document.querySelectorAll('.galerie-ateliers img');
+  const fullscreenContainer = document.getElementById('fullscreenContainer');
+  const fullscreenImage = document.getElementById('fullscreenImage');
+  const btnQuitter = document.getElementById('btnQuitterPleinEcran');
+
+  // Quand on clique sur une image, on affiche la superposition avec l'image agrandie
+  images.forEach(img => {
+    img.addEventListener('click', () => {
+      fullscreenImage.src = img.src;
+      fullscreenImage.alt = img.alt;
+      fullscreenContainer.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // désactive scroll page
+    });
+  });
+
+  // Quand on clique sur le bouton fermer, on masque la superposition
+  btnQuitter.addEventListener('click', () => {
+    fullscreenContainer.style.display = 'none';
+    fullscreenImage.src = '';
+    fullscreenImage.alt = '';
+    document.body.style.overflow = ''; // réactive scroll page
+  });
+
+  // Clic sur le fond noir pour fermer aussi
+  fullscreenContainer.addEventListener('click', (e) => {
+    if (e.target === fullscreenContainer) {
+      btnQuitter.click();
+    }
+  });
+</script>
 </body>
 </html>
