@@ -159,6 +159,19 @@
       }
     });
   });
+    window.addEventListener('scroll', () => {
+  const btn = document.getElementById('btnScrollTop');
+  if (window.scrollY > 200) {
+    btn.style.display = 'block';
+  } else {
+    btn.style.display = 'none';
+  }
+});
+
+document.getElementById('btnScrollTop').addEventListener('click', () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 </script>
   <button id="btnScrollTop" title="Remonter">↑</button>
 </body>
