@@ -1,343 +1,211 @@
-/* ==============================
-   RESET & BASE GÉNÉRALE
-   ============================== */
-body {
+/* style.css : Thème acier & soudure */
+
+/* Couleurs principales */
+:root {
+  --gris-acier: #2e2e2e;
+  --bleu-soudure: #1abc9c;
+  --gris-clair: #d9d9d9;
+  --noir: #111;
+  --blanc: #ffffff;
+  --texte-principal: #e0e0e0;
+}
+
+/* Réinitialisation simple */
+* {
   margin: 0;
-  font-family: Arial, sans-serif;
-  background: #f8f8f8;
-  color: #222;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* ==============================
-   TYPOGRAPHIE
-   ============================== */
-h2 {
-  border-bottom: 2px solid #1abc9c;
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  color: #2c3e50;
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: var(--noir);
+  color: var(--texte-principal);
+  line-height: 1.6;
 }
 
-/* ==============================
-   HEADER & LOGO
-   ============================== */
 header {
-  background-color: #2c3e50;
-  color: white;
-  padding: 40px 20px;
+  background-color: var(--gris-acier);
   text-align: center;
+  padding: 2rem 1rem;
+  border-bottom: 4px solid var(--bleu-soudure);
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2.5em;
+  font-size: 2.5rem;
+  color: var(--blanc);
+  margin-bottom: 0.5rem;
 }
 
 header p {
-  font-size: 1.2em;
-  margin-top: 10px;
+  color: var(--gris-clair);
+  font-style: italic;
 }
 
-.logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.logo svg {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-
-/* ==============================
-   NAVIGATION
-   ============================== */
 nav {
-  position: sticky;
-  top: 0;
-  background-color: #34495e;
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 15px 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  background-color: var(--noir);
+  border-top: 2px solid var(--bleu-soudure);
+  border-bottom: 2px solid var(--bleu-soudure);
 }
 
 nav a {
-  color: white;
+  color: var(--blanc);
+  padding: 1rem;
   text-decoration: none;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 4px;
   transition: background 0.3s;
 }
 
 nav a:hover {
-  background-color: #1abc9c;
+  background-color: var(--bleu-soudure);
+  color: var(--noir);
 }
 
-/* ==============================
-   SECTIONS GÉNÉRALES
-   ============================== */
 section {
-  padding: 40px 20px;
+  padding: 3rem 1rem;
   max-width: 1000px;
-  margin: 80px auto 0 auto;
+  margin: auto;
 }
 
-/* ==============================
-   ATELIER (petites images)
-   ============================== */
-#atelier p {
+h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--bleu-soudure);
+  border-left: 4px solid var(--bleu-soudure);
+  padding-left: 0.5rem;
+}
+
+.galerie-images {
   display: flex;
+  gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
 }
 
-#atelier img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 6px;
-  margin: 10px;
-  transition: transform 0.2s;
-}
-
-#atelier img:hover {
-  transform: scale(1.03);
-}
-
-/* ==============================
-   GALERIE (grille responsive)
-   ============================== */
-#galerie {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  justify-items: center;
-}
-
-#galerie img {
-  width: 100%;
-  max-width: 150px;
-  border-radius: 8px;
-  transition: transform 0.2s;
-}
-
-#galerie img:hover {
-  transform: scale(1.03);
-}
-
-/* ==============================
-   GALERIE ATELIERS (grille spécifique)
-   ============================== */
-.galerie-ateliers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  padding: 10px;
-}
-
-.galerie-ateliers img {
-  width: 100%;
+.galerie-images img {
+  max-width: 300px;
   height: auto;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
+  border: 2px solid var(--gris-clair);
+  border-radius: 8px;
   cursor: pointer;
-  margin: 0; /* margin géré par gap dans la grille */
+  transition: transform 0.3s, border-color 0.3s;
 }
 
-.galerie-ateliers img:hover {
+.galerie-images img:hover {
   transform: scale(1.05);
+  border-color: var(--bleu-soudure);
 }
 
-/* ==============================
-   FORMULAIRE DE CONTACT
-   ============================== */
 form input,
-form textarea,
-form button {
+form textarea {
   width: 100%;
-  max-width: 500px;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  padding: 0.8rem;
+  margin-bottom: 1rem;
+  border: 1px solid var(--gris-clair);
+  background: var(--gris-acier);
+  color: var(--blanc);
+  border-radius: 4px;
 }
 
 form button {
-  background-color: #1abc9c;
-  color: white;
+  background: var(--bleu-soudure);
+  color: var(--noir);
+  padding: 0.8rem 1.5rem;
   border: none;
+  border-radius: 4px;
   cursor: pointer;
   transition: background 0.3s;
 }
 
 form button:hover {
-  background-color: #16a085;
+  background: #16a085;
 }
 
-.infos-contact {
-  margin-top: 30px;
+.infos-contact a {
+  color: var(--bleu-soudure);
+  text-decoration: none;
 }
 
-.horaires {
-  list-style: none;
-  padding-left: 0;
+.infos-contact a:hover {
+  text-decoration: underline;
 }
 
-/* ==============================
-   PLEIN ÉCRAN - GALERIE
-   ============================== */
+footer {
+  background-color: var(--gris-acier);
+  text-align: center;
+  padding: 1rem;
+  color: var(--gris-clair);
+}
+
+#btnScrollTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: var(--bleu-soudure);
+  color: var(--noir);
+  border: none;
+  border-radius: 50%;
+  padding: 0.8rem 1rem;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: none;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  transition: background 0.3s;
+}
+
+#btnScrollTop:hover {
+  background: #16a085;
+}
+
 #fullscreenContainer {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0,0,0,0.95);
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1000;
   flex-direction: column;
-  z-index: 9999;
 }
 
 #fullscreenContainer img {
   max-width: 90%;
   max-height: 90%;
+  transition: transform 0.3s ease;
+  border: 2px solid var(--bleu-soudure);
   border-radius: 8px;
 }
 
 #btnQuitterPleinEcran {
   position: absolute;
   top: 20px;
-  right: 20px;
-  background: #ff3b3b;
-  color: white;
-  font-size: 24px;
+  right: 30px;
+  font-size: 2rem;
+  color: var(--blanc);
+  background: none;
   border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
   cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: background 0.3s;
 }
 
-#btnQuitterPleinEcran:hover {
-  background: #e60000;
-}
-
-/* ==============================
-   PIED DE PAGE
-   ============================== */
-footer {
-  background-color: #2c3e50;
-  color: white;
-  text-align: center;
-  padding: 20px;
-}
-
-/* ==============================
-   RESPONSIVE DESIGN
-   ============================== */
-@media screen and (max-width: 600px) {
-  .logo svg {
-    width: 80px;
-    height: auto;
-  }
-
-  header h1 {
-    font-size: 1.8em;
-  }
-
-  header p {
-    font-size: 1em;
-  }
-
-  #fullscreenContainer {
-    overflow: hidden;
-    cursor: zoom-in;
-  }
-
-  #fullscreenImage {
-    transition: transform 0.1s ease-out;
-    transform-origin: center center;
-  }
-
-  #btnScrollTop {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: #1abc9c;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 45px;
-    height: 45px;
-    font-size: 20px;
-    cursor: pointer;
-    display: none;
-    box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  }
-
-  #btnScrollTop:hover {
-    background: #16a085;
-  }
-}
-
-/* ==============================
-   ANIMATIONS
-   ============================== */
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
-
 .fade-in-visible {
   opacity: 1;
   transform: translateY(0);
 }
-#fullscreenContainer {
-  position: fixed;
-  top: 0; left: 0;
-  width: 100vw; height: 100vh;
-  background: rgba(0, 0, 0, 0.9);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 9999;
+
+a {
+  color: var(--bleu-soudure);
 }
 
-#fullscreenContainer img {
-  max-width: 90%;
-  max-height: 90%;
-  border-radius: 8px;
-}
-
-#btnQuitterPleinEcran {
-  position: absolute;
-  top: 20px; right: 20px;
-  background: #ff3b3b;
-  color: white;
-  font-size: 30px;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: background 0.3s;
-}
-
-#btnQuitterPleinEcran:hover {
-  background: #e60000;
+a:hover {
+  color: #16a085;
 }
