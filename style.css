@@ -183,3 +183,22 @@ footer {
     font-size: 1em;
   }
 }
+
+#atelier img {
+  width: 100%;
+  max-width: 250px; /* ou 200px, selon le rendu souhaité */
+  border-radius: 6px;
+  margin: 10px;
+  transition: transform 0.2s;
+}
+
+#atelier img:hover {
+  transform: scale(1.03);
+}
+
+#atelier p {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
