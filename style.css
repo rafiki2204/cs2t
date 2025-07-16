@@ -1,4 +1,6 @@
-/* RESET & BASE GÉNÉRALE */
+/* ==============================
+   RESET & BASE GÉNÉRALE
+   ============================== */
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -6,7 +8,9 @@ body {
   color: #222;
 }
 
-/* TYPOGRAPHIE */
+/* ==============================
+   TYPOGRAPHIE
+   ============================== */
 h2 {
   border-bottom: 2px solid #1abc9c;
   padding-bottom: 10px;
@@ -14,7 +18,9 @@ h2 {
   color: #2c3e50;
 }
 
-/* HEADER & LOGO */
+/* ==============================
+   HEADER & LOGO
+   ============================== */
 header {
   background-color: #2c3e50;
   color: white;
@@ -45,7 +51,9 @@ header p {
   display: block;
 }
 
-/* NAVIGATION */
+/* ==============================
+   NAVIGATION
+   ============================== */
 nav {
   position: sticky;
   top: 0;
@@ -72,14 +80,18 @@ nav a:hover {
   background-color: #1abc9c;
 }
 
-/* SECTIONS GÉNÉRALES */
+/* ==============================
+   SECTIONS GÉNÉRALES
+   ============================== */
 section {
   padding: 40px 20px;
   max-width: 1000px;
   margin: 80px auto 0 auto;
 }
 
-/* ATELIER */
+/* ==============================
+   ATELIER (petites images)
+   ============================== */
 #atelier p {
   display: flex;
   flex-wrap: wrap;
@@ -98,7 +110,9 @@ section {
   transform: scale(1.03);
 }
 
-/* GALERIE */
+/* ==============================
+   GALERIE (grille responsive)
+   ============================== */
 #galerie {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -117,7 +131,33 @@ section {
   transform: scale(1.03);
 }
 
-/* FORMULAIRE DE CONTACT */
+/* ==============================
+   GALERIE ATELIERS (grille spécifique)
+   ============================== */
+.galerie-ateliers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 15px;
+  padding: 10px;
+}
+
+.galerie-ateliers img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  margin: 0; /* margin géré par gap dans la grille */
+}
+
+.galerie-ateliers img:hover {
+  transform: scale(1.05);
+}
+
+/* ==============================
+   FORMULAIRE DE CONTACT
+   ============================== */
 form input,
 form textarea,
 form button {
@@ -150,7 +190,9 @@ form button:hover {
   padding-left: 0;
 }
 
-/* PLEIN ÉCRAN - GALERIE */
+/* ==============================
+   PLEIN ÉCRAN - GALERIE
+   ============================== */
 #fullscreenContainer {
   position: fixed;
   top: 0;
@@ -191,7 +233,9 @@ form button:hover {
   background: #e60000;
 }
 
-/* PIED DE PAGE */
+/* ==============================
+   PIED DE PAGE
+   ============================== */
 footer {
   background-color: #2c3e50;
   color: white;
@@ -199,7 +243,9 @@ footer {
   padding: 20px;
 }
 
-/* RESPONSIVE DESIGN */
+/* ==============================
+   RESPONSIVE DESIGN
+   ============================== */
 @media screen and (max-width: 600px) {
   .logo svg {
     width: 80px;
@@ -210,40 +256,44 @@ footer {
     font-size: 1.8em;
   }
 
-  #fullscreenContainer {
-  overflow: hidden;
-  cursor: zoom-in;
-}
-
-#fullscreenImage {
-  transition: transform 0.1s ease-out;
-  transform-origin: center center;
-}
-  #btnScrollTop {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #1abc9c;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  font-size: 20px;
-  cursor: pointer;
-  display: none;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-}
-
-#btnScrollTop:hover {
-  background: #16a085;
-}
-
-
   header p {
     font-size: 1em;
   }
+
+  #fullscreenContainer {
+    overflow: hidden;
+    cursor: zoom-in;
+  }
+
+  #fullscreenImage {
+    transition: transform 0.1s ease-out;
+    transform-origin: center center;
+  }
+
+  #btnScrollTop {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #1abc9c;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    font-size: 20px;
+    cursor: pointer;
+    display: none;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+
+  #btnScrollTop:hover {
+    background: #16a085;
+  }
 }
+
+/* ==============================
+   ANIMATIONS
+   ============================== */
 .fade-in {
   opacity: 0;
   transform: translateY(40px);
@@ -253,30 +303,4 @@ footer {
 .fade-in-visible {
   opacity: 1;
   transform: translateY(0);
-}
-.galerie-ateliers img {
-  max-width: 200px;
-  height: auto;
-  margin: 10px;
-  border-radius: 5px; /
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-.galerie-ateliers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  padding: 10px;
-}
-
-.galerie-ateliers img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-
-.galerie-ateliers img:hover {
-  transform: scale(1.05);
 }
