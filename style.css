@@ -210,6 +210,16 @@ footer {
     font-size: 1.8em;
   }
 
+  #fullscreenContainer {
+  overflow: hidden;
+  cursor: zoom-in;
+}
+
+#fullscreenImage {
+  transition: transform 0.1s ease-out;
+  transform-origin: center center;
+}
+
   header p {
     font-size: 1em;
   }
