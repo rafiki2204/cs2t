@@ -6,10 +6,20 @@
   <title>SARL CS2T</title>
   <link rel="stylesheet" href="style.css" />
   <style>
-  html {
-    scroll-behavior: smooth;
-  }
-</style>
+    html {
+      scroll-behavior: smooth;
+    }
+    .fade-in {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .fade-in-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
 <body>
   <!-- En-tête -->
@@ -36,7 +46,7 @@
   </nav>
 
   <!-- Section Atelier -->
-  <section id="atelier">
+  <section id="atelier" class="fade-in">
     <h2>L'atelier</h2>
     <p>
       Situé à La chaussée Tirancourt, notre atelier est équipé pour tous types de travaux : découpe, soudure, pliage…<br />
@@ -56,7 +66,7 @@
   </section>
 
   <!-- Section Galerie -->
-  <section id="galerie">
+  <section id="galerie" class="fade-in">
     <h2>Galerie</h2>
     <div class="galerie-images">
       <img class="imagePleinEcran" src="image/carter_inox.jpeg" alt="carter de protection" />
@@ -71,7 +81,7 @@
   </div>
 
   <!-- Section Contact -->
-  <section id="contact">
+  <section id="contact" class="fade-in">
     <h2>Contactez-nous</h2>
     <form action="https://formspree.io/f/mwpqeljj" method="POST">
       <label for="nom">Nom :</label><br />
@@ -100,12 +110,13 @@
 
   <!-- Pied de page -->
   <footer>
-    <p>&copy; 2025 SARL CS2T. Tous droits réservés.</p>
+    <p>&copy; <span id="copyright-year"></span> SARL CS2T. Tous droits réservés.</p>
   </footer>
 
-  <!-- Script JavaScript pour affichage plein écran -->
+  <!-- Script JavaScript -->
   <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // PLEIN ÉCRAN
     const images = document.querySelectorAll('.imagePleinEcran');
     const container = document.getElementById('fullscreenContainer');
     const fullscreenImage = document.getElementById('fullscreenImage');
@@ -126,7 +137,6 @@
       });
     });
 
-    // LOUPE : détection de la souris sur l'image fullscreen
     fullscreenImage.addEventListener('mousemove', (e) => {
       const rect = fullscreenImage.getBoundingClientRect();
       const x = ((e.clientX - rect.left) / rect.width) * 100;
@@ -135,7 +145,6 @@
       fullscreenImage.style.transform = 'scale(2)';
     });
 
-    // Réinitialiser l’image au survol terminé
     fullscreenImage.addEventListener('mouseleave', () => {
       fullscreenImage.style.transform = 'scale(1)';
     });
@@ -158,21 +167,33 @@
         fullscreenImage.src = '';
       }
     });
-  });
+
+    // BOUTON HAUT DE PAGE
+    const btnScrollTop = document.getElementById('btnScrollTop');
     window.addEventListener('scroll', () => {
-  const btn = document.getElementById('btnScrollTop');
-  if (window.scrollY > 200) {
-    btn.style.display = 'block';
-  } else {
-    btn.style.display = 'none';
-  }
-});
+      btnScrollTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+    });
+    btnScrollTop.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
 
-document.getElementById('btnScrollTop').addEventListener('click', () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+    // ANNÉE DYNAMIQUE
+    document.getElementById('copyright-year').textContent = new Date().getFullYear();
 
-</script>
+    // EFFET FADE-IN
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('fade-in-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  });
+  </script>
+
   <button id="btnScrollTop" title="Remonter">↑</button>
 </body>
 </html>
