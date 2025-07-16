@@ -100,46 +100,60 @@
 
   <!-- Script JavaScript pour affichage plein écran -->
   <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      const images = document.querySelectorAll('.imagePleinEcran');
-      const container = document.getElementById('fullscreenContainer');
-      const fullscreenImage = document.getElementById('fullscreenImage');
-      const btnQuitter = document.getElementById('btnQuitterPleinEcran');
+  document.addEventListener('DOMContentLoaded', () => {
+    const images = document.querySelectorAll('.imagePleinEcran');
+    const container = document.getElementById('fullscreenContainer');
+    const fullscreenImage = document.getElementById('fullscreenImage');
+    const btnQuitter = document.getElementById('btnQuitterPleinEcran');
 
-      images.forEach(img => {
-        img.style.cursor = 'pointer';
-        img.addEventListener('click', () => {
-          fullscreenImage.src = img.src;
-          container.style.display = 'flex';
-          if (container.requestFullscreen) {
-            container.requestFullscreen();
-          } else if (container.webkitRequestFullscreen) {
-            container.webkitRequestFullscreen();
-          } else if (container.msRequestFullscreen) {
-            container.msRequestFullscreen();
-          }
-        });
-      });
-
-      btnQuitter.addEventListener('click', () => {
-        if (document.exitFullscreen) {
-          document.exitFullscreen();
-        } else if (document.webkitExitFullscreen) {
-          document.webkitExitFullscreen();
-        } else if (document.msExitFullscreen) {
-          document.msExitFullscreen();
-        }
-        container.style.display = 'none';
-        fullscreenImage.src = '';
-      });
-
-      document.addEventListener('fullscreenchange', () => {
-        if (!document.fullscreenElement) {
-          container.style.display = 'none';
-          fullscreenImage.src = '';
+    images.forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => {
+        fullscreenImage.src = img.src;
+        container.style.display = 'flex';
+        if (container.requestFullscreen) {
+          container.requestFullscreen();
+        } else if (container.webkitRequestFullscreen) {
+          container.webkitRequestFullscreen();
+        } else if (container.msRequestFullscreen) {
+          container.msRequestFullscreen();
         }
       });
     });
-  </script>
+
+    // LOUPE : détection de la souris sur l'image fullscreen
+    fullscreenImage.addEventListener('mousemove', (e) => {
+      const rect = fullscreenImage.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      fullscreenImage.style.transformOrigin = `${x}% ${y}%`;
+      fullscreenImage.style.transform = 'scale(2)';
+    });
+
+    // Réinitialiser l’image au survol terminé
+    fullscreenImage.addEventListener('mouseleave', () => {
+      fullscreenImage.style.transform = 'scale(1)';
+    });
+
+    btnQuitter.addEventListener('click', () => {
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+      container.style.display = 'none';
+      fullscreenImage.src = '';
+    });
+
+    document.addEventListener('fullscreenchange', () => {
+      if (!document.fullscreenElement) {
+        container.style.display = 'none';
+        fullscreenImage.src = '';
+      }
+    });
+  });
+</script>
 </body>
 </html>
