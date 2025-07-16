@@ -200,6 +200,39 @@
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
   });
+    // === CARROUSEL ===
+const track = document.querySelector('.carousel-track');
+const prevBtn = document.querySelector('.carousel-btn.prev');
+const nextBtn = document.querySelector('.carousel-btn.next');
+const images = document.querySelectorAll('.carousel-track img');
+let index = 0;
+
+function updateCarousel() {
+  const slideWidth = images[0].clientWidth;
+  track.style.transform = `translateX(-${index * slideWidth}px)`;
+}
+
+// Auto défilement
+let autoSlide = setInterval(() => {
+  index = (index + 1) % images.length;
+  updateCarousel();
+}, 5000);
+
+// Flèches
+prevBtn.addEventListener('click', () => {
+  index = (index - 1 + images.length) % images.length;
+  updateCarousel();
+  clearInterval(autoSlide);
+});
+
+nextBtn.addEventListener('click', () => {
+  index = (index + 1) % images.length;
+  updateCarousel();
+  clearInterval(autoSlide);
+});
+
+window.addEventListener('resize', updateCarousel);
+
   </script>
 
   <button id="btnScrollTop" title="Remonter">↑</button>
