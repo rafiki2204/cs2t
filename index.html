@@ -105,8 +105,18 @@
       <label for="email">Email :</label><br />
       <input type="email" id="email" name="email" required /><br /><br />
 
-      <label for="message">Message :</label><br />
-      <textarea id="message" name="message" rows="5" required></textarea><br /><br />
+      <label for="objet">Objet :</label><br />
+<select id="objet" name="objet" required>
+  <option value="">-- Choisir un objet --</option>
+  <option value="demande-devis">Demande de devis</option>
+  <option value="infos-techniques">Informations techniques</option>
+  <option value="prise-rdv">Prise de rendez-vous</option>
+  <option value="autre">Autre</option>
+</select><br /><br />
+
+<label for="message">Message :</label><br />
+<textarea id="message" name="message" rows="5" required></textarea><br /><br />
+
 
       <button type="submit">Envoyer</button>
     </form>
