@@ -156,6 +156,15 @@
 
   <!-- Script JavaScript -->
   <script>
+    // Animation d'ouverture
+window.addEventListener("load", () => {
+  const overlay = document.getElementById("loading-overlay");
+  overlay.style.opacity = "0";
+  setTimeout(() => {
+    overlay.style.display = "none";
+  }, 1000); // après le fondu
+});
+
   document.addEventListener('DOMContentLoaded', () => {
     // PLEIN ÉCRAN
     const images = document.querySelectorAll('.imagePleinEcran');
