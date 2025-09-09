@@ -1,43 +1,212 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta name="description" content="SARL CS2T : Spécialiste en chaudronnerie, soudure et fabrication métallique à La Chaussée Tirancourt.">
-<meta name="keywords" content="chaudronnerie, soudure, inox, métal, fabrication, Amiens, CS2T">
-<meta name="author" content="SARL CS2T">
-
-  <link rel="icon" type="image/png" href="favicon.png">
+  <!-- SEO de base -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SARL CS2T</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>SARL CS2T – Chaudronnerie • Soudure • Tuyauterie</title>
+  <meta name="description" content="SARL CS2T : Spécialiste en chaudronnerie, soudure et fabrication métallique à La Chaussée Tirancourt." />
+  <meta name="keywords" content="chaudronnerie, soudure, inox, métal, fabrication, Amiens, CS2T" />
+  <meta name="author" content="SARL CS2T" />
+  <link rel="icon" type="image/png" href="favicon.png" />
+
   <style>
-    html {
-      scroll-behavior: smooth;
-    }
-    .fade-in {
-      opacity: 0;
-      transform: translateY(40px);
-      transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    /* ===================== Variables & Base ===================== */
+    :root{
+      --blue:#3498db;       /* bleu électrique */
+      --blue-dark:#2980b9;  /* barre nav */
+      --teal:#1abc9c;       /* accent */
+      --text:#2c3e50;       /* texte principal */
+      --muted:#555;         /* légendes, détails */
+      --bg:#ffffff;         /* fond blanc */
     }
 
-    .fade-in-visible {
-      opacity: 1;
-      transform: translateY(0);
+    html { scroll-behavior: smooth; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+    }
+
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+
+    /* ===================== Skip link ===================== */
+    .skip-link {
+      position: absolute; left: -9999px; top: 0;
+      background: var(--teal); color:#fff; padding:10px 14px; border-radius:6px;
+    }
+    .skip-link:focus { left: 10px; top: 10px; z-index: 10000; }
+
+    /* ===================== Overlay chargement ===================== */
+    #loading-overlay {
+      position: fixed; inset: 0;
+      background-color: var(--text);
+      color: #fff;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      z-index: 9999; transition: opacity 1s ease;
+    }
+    .loader h1 { margin: 0; font-size: 2rem; animation: fadeIn 1.2s ease-in-out; }
+    .loader p { margin-top: 8px; opacity: .8; animation: fadeIn 1.5s ease-in-out .2s both; }
+    @keyframes fadeIn { from {opacity:0; transform: translateY(10px);} to {opacity:1; transform: translateY(0);} }
+
+    /* ===================== Header ===================== */
+    header {
+      background: var(--blue);
+      color: #fff;
+      text-align: center;
+      padding: 40px 20px 28px;
+    }
+    .logo { display:flex; justify-content:center; align-items:center; margin-bottom: 8px; }
+    header h1 { margin: 6px 0 4px; font-size: clamp(1.6rem, 2.8vw, 2.2rem); letter-spacing:.5px; }
+    header p { margin: 0; color: #dce3ea; }
+
+    /* ===================== Nav sticky ===================== */
+    nav {
+      position: sticky; top: 0; z-index: 1000;
+      background: var(--blue-dark);
+      display: flex; justify-content: center; gap: 14px; padding: 12px 10px;
+      box-shadow: 0 2px 6px rgba(0,0,0,.15);
+    }
+    nav a {
+      position: relative; color: #fff; text-decoration: none; font-weight: 600;
+      padding: 8px 14px; border-radius: 6px; transition: background .25s ease, color .25s ease;
+    }
+    nav a.active { background: rgba(26,188,156,0.18); }
+    nav a::after{
+      content:""; position:absolute; left: 14px; right:14px; bottom:6px; height:2px;
+      background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
+    }
+    nav a:hover::after{ transform: scaleX(1); }
+
+    /* ===================== Sections ===================== */
+    main section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: 70px auto 0;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.05);
+      scroll-margin-top: 90px; /* évite que la nav cache le titre */
+    }
+    h2{
+      margin-top: 0;
+      color: #1f2d3d;
+      border-bottom: 2px solid var(--blue-dark);
+      padding-bottom: 10px;
+      margin-bottom: 20px;
+      font-size: clamp(1.3rem, 2.2vw, 1.6rem);
+    }
+    .fade-in { opacity: 0; transform: translateY(40px); transition: opacity .8s ease-out, transform .8s ease-out; }
+    .fade-in-visible { opacity: 1; transform: translateY(0); }
+
+    /* ===================== Services ===================== */
+    .services-list {
+      display: flex; flex-wrap: wrap; gap: 18px; list-style: none; padding: 0; margin: 0;
+    }
+    .services-list li {
+      background: #f7fafc; border:1px solid #e9eef3; padding: 12px 14px; border-radius: 8px;
+    }
+
+    /* ===================== Galerie / Carrousel ===================== */
+    .carousel-container { position: relative; max-width: 100%; overflow: hidden; margin: auto; }
+    .carousel-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      font-size: 2rem; background: rgba(0,0,0,0.5); color: #fff; border: none;
+      padding: 8px 12px; cursor: pointer; z-index: 10; border-radius: 8px;
+    }
+    .carousel-btn.prev { left: 10px; }
+    .carousel-btn.next { right: 10px; }
+
+    .carousel-track { display: flex; transition: transform .5s ease; width: max-content; }
+    .carousel-track figure {
+      margin: 0; text-align: center; color: var(--text);
+      width: min(100%, 640px);
+      padding: 0 6px;
+    }
+    .carousel-track img {
+      width: 100%; height: auto; display: block; object-fit: cover;
+      border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,.10);
+    }
+    .carousel-track figcaption {
+      margin-top: 8px; font-style: italic; color: var(--muted); font-size: .95rem;
+    }
+
+    /* ===================== Plein écran (lightbox) ===================== */
+    #fullscreenContainer {
+      position: fixed; inset: 0; display:none;
+      background: rgba(0,0,0,.9);
+      align-items: center; justify-content: center; flex-direction: column;
+      z-index: 9998; padding: 20px;
+    }
+    #btnQuitterPleinEcran {
+      position: absolute; top: 20px; right: 20px;
+      background: var(--blue); color: #fff; font-size: 22px; border: none;
+      border-radius: 50%; width: 44px; height: 44px; cursor: pointer;
+      box-shadow: 0 0 10px rgba(0,0,0,.3);
+    }
+    #fullscreenImage { max-height: 80vh; max-width: 90vw; border-radius: 10px; }
+    #fullscreenCaption { color:#fff; margin-top: 12px; font-size: 1.05rem; text-align: center; }
+
+    /* ===================== Formulaire ===================== */
+    form label { font-weight: 600; color:#333; }
+    form input, form select, form textarea {
+      width: 100%; max-width: 520px; padding: 10px; margin-top: 4px; margin-bottom: 16px;
+      border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box; transition: border-color .3s ease;
+    }
+    form input:focus, form select:focus, form textarea:focus { border-color: var(--teal); outline: none; }
+    form button[type="submit"] {
+      background: var(--blue); color:#fff; padding: 12px 22px; border: none; border-radius: 6px;
+      font-size: 16px; cursor: pointer; transition: background .25s ease;
+    }
+    form button[type="submit"]:hover { background: #1e70bf; }
+
+    .infos-contact a { color: var(--blue-dark); text-decoration: none; }
+    .infos-contact a:hover { text-decoration: underline; }
+    .horaires { list-style: none; padding-left: 0; }
+
+    /* ===================== Footer ===================== */
+    footer {
+      background: var(--blue-dark); color:#fff; text-align: center; padding: 20px; margin-top: 70px;
+    }
+
+    /* ===================== Bouton haut de page ===================== */
+    #btnScrollTop {
+      position: fixed; bottom: 20px; right: 20px;
+      background: var(--blue); color:#fff; border: none; border-radius: 50%;
+      width: 45px; height: 45px; font-size: 20px; cursor: pointer; display: none;
+      box-shadow: 0 6px 18px rgba(0,0,0,.2);
+    }
+    #btnScrollTop:hover { background: #1e70bf; }
+
+    /* ===================== Focus visible ===================== */
+    :focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; }
+
+    /* ===================== Responsive titres ===================== */
+    @media (max-width: 600px){
+      header { padding: 28px 16px; }
+      .carousel-btn { font-size: 1.6rem; padding: 6px 10px; }
     }
   </style>
 </head>
 <body>
+  <!-- Skip to content -->
   <a class="skip-link" href="#accueil">Passer au contenu</a>
-  <div id="loading-overlay">
-  <div class="loader">
-    <h1>SARL CS2T</h1>
-    <p>Chargement...</p>
-  </div>
-</div>
 
-  <!-- En-tête -->
-  <header>
-    <div class="logo">
+  <!-- Overlay de chargement -->
+  <div id="loading-overlay" aria-hidden="true">
+    <div class="loader">
+      <h1>SARL CS2T</h1>
+      <p>Chargement…</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="logo" aria-hidden="true">
       <svg width="120" height="40" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
         <rect width="300" height="100" fill="#3498db" />
         <text x="40" y="90" font-family="Arial Black, sans-serif" font-size="48" fill="#ffffff">C</text>
@@ -50,8 +219,11 @@
     <p>Chaudronnerie & savoir-faire métallique</p>
   </header>
 
-  <!-- Navigation principale -->
-  <nav>
+  <!-- Ancre accueil pour le lien du menu -->
+  <div id="accueil" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav role="navigation" aria-label="Navigation principale">
     <a href="#accueil">Accueil</a>
     <a href="#atelier">L'atelier</a>
     <a href="#services">Nos services</a>
@@ -59,290 +231,285 @@
     <a href="#contact">Contact</a>
   </nav>
 
-  <!-- Section Atelier -->
-  <section id="atelier" class="fade-in">
-    <h2>L'atelier</h2>
-    <p>
-      Situé à La chaussée Tirancourt, notre atelier est équipé pour tous types de travaux : découpe, soudure, pliage…<br />
-      Nous disposons d'une cisaille, d'une scie à ruban, de deux presses-plieuses, d'une poinçonneuse, etc, pour la mise en forme.<br />
-      Pour le soudage, nous possédons deux postes MIG et un poste TIG AC/DC.<br />
-      Pour la finition, nous avons une cabine de peinture, ainsi que la possibilité de passiver les pièces inox.
-    </p>
-    <p><a href="atelier-photos.html" target="_blank" rel="noopener" style="color:#1abc9c; font-weight:bold;">Voir les photos de l'atelier</a></p>
-  </section>
-<section id="services" class="fade-in">
-  <h2>Nos Services</h2>
-  <ul style="display: flex; flex-wrap: wrap; gap: 30px; list-style: none; padding: 0;">
-    <li> Soudure inox, acier, alu</li>
-    <li> Découpe et pliage sur mesure</li>
-    <li> Peinture & finition inox</li>
-    <li> Fabrication de structures métalliques</li>
-  </ul>
-</section>
+  <main role="main">
+    <!-- Atelier -->
+    <section id="atelier" class="fade-in">
+      <h2>L'atelier</h2>
+      <p>
+        Situé à La Chaussée-Tirancourt, notre atelier est équipé pour tous types de travaux : découpe, soudure, pliage…<br />
+        Nous disposons d'une cisaille, d'une scie à ruban, de deux presses-plieuses, d'une poinçonneuse pour la mise en forme.<br />
+        Pour le soudage, nous possédons deux postes MIG et un poste TIG AC/DC.<br />
+        Pour la finition, nous avons une cabine de peinture, ainsi que la possibilité de passiver les pièces inox.
+      </p>
+      <p><a href="atelier-photos.html" target="_blank" rel="noopener" style="color:var(--teal); font-weight:600;">Voir les photos de l'atelier</a></p>
+    </section>
 
-  <!-- Section Galerie -->
-  <section id="galerie" class="fade-in">
-    <h2>Galerie</h2>
-    <div class="carousel-container fade-in">
-  <button class="carousel-btn prev">⟨</button>
-  <div class="carousel-track">
-  <figure>
-    <img src="image/carter_inox.jpeg" alt="Carter de protection en inox" />
-    <figcaption>Carter de protection en inox</figcaption>
-  </figure>
-  <figure>
-    <img src="image/garde-corps_volute.jpeg" alt="Garde-corps en fer forgé voluté" />
-    <figcaption>Garde-corps en fer forgé voluté</figcaption>
-  </figure>
-  <figure>
-    <img src="image/support_moule.jpg" alt="Support de moule" />
-    <figcaption>Support de moule</figcaption>
-  </figure>
-  <figure>
-    <img src="image/grille_goodyear.jpg" alt="Grille extérieure galvanisée" />
-    <figcaption>Grille extérieure galvanisée</figcaption>
-  </figure>
-</div>
-
-  <button class="carousel-btn next">⟩</button>
-    </div>
-
-  </section>
-
-  <!-- Plein écran personnalisé -->
-  <!-- Plein écran personnalisé avec légende -->
-<div id="fullscreenContainer" style="display:none; flex-direction: column; align-items: center; background-color: rgba(0,0,0,0.9); padding: 20px;">
-  <button id="btnQuitterPleinEcran" style="align-self: flex-end; margin-bottom: 10px;">✖</button>
-  <img id="fullscreenImage" src="" alt="" style="max-height: 80vh; max-width: 90vw;" />
-  <p id="fullscreenCaption" style="color: white; font-size: 1.2rem; margin-top: 15px; text-align: center;"></p>
-</div>
-
-
-  <!-- Section Contact -->
-  <section id="contact" class="fade-in">
-    <h2>Contactez-nous</h2>
-    <form action="https://formspree.io/f/mwpqeljj" method="POST">
-      <label for="nom">Nom :</label><br />
-      <input type="text" id="nom" name="nom" required /><br /><br />
-
-      <label for="email">Email :</label><br />
-      <input type="email" id="email" name="email" required /><br /><br />
-
-      <label for="objet">Objet :</label><br />
-<select id="objet" name="objet" required>
-  <option value="">-- Choisir un objet --</option>
-  <option value="demande-devis">Demande de devis</option>
-  <option value="infos-techniques">Informations techniques</option>
-  <option value="prise-rdv">Prise de rendez-vous</option>
-  <option value="autre">Autre</option>
-</select><br /><br />
-
-<label for="message">Message :</label><br />
-<textarea id="message" name="message" rows="5" required></textarea><br /><br />
-
-
-      <button type="submit">Envoyer</button>
-    </form>
-
-    <div class="infos-contact">
-      <p>📞 Téléphone : <a href="tel:0322528546">03 22 52 58 46</a></p>
-      <p>✉️ Email : <a href="mailto:cs2t@orange.fr">cs2t@orange.fr</a></p>
-      <p>📍 Adresse : 4 rue Vignacourt, 80310 La chaussée Tirancourt</p>
-      <p>🕒 Horaires d’ouverture :</p>
-      <ul class="horaires">
-        <li>Lundi – Vendredi : 08h00 – 17h00</li>
-        <li>Samedi et Dimanche : Fermé</li>
-        <iframe 
-  src="https://www.google.com/maps?q=4 rue Vignacourt, 80310 La chaussée Tirancourt&output=embed"
-  width="100%" 
-  height="300" 
-  style="border:0;" 
-  allowfullscreen="" 
-  loading="lazy">
-</iframe>
-
+    <!-- Services -->
+    <section id="services" class="fade-in">
+      <h2>Nos services</h2>
+      <ul class="services-list">
+        <li>🔧 Soudure inox, acier, aluminium</li>
+        <li>📐 Découpe et pliage sur mesure</li>
+        <li>🎨 Peinture & finition inox</li>
+        <li>🏗 Fabrication de structures métalliques</li>
       </ul>
-    </div>
-  </section>
+    </section>
 
-  <!-- Pied de page -->
-  <footer>
+    <!-- Galerie -->
+    <section id="galerie" class="fade-in">
+      <h2>Galerie</h2>
+
+      <div class="carousel-container">
+        <button class="carousel-btn prev" aria-label="Précédent">⟨</button>
+
+        <div class="carousel-track">
+          <figure>
+            <img src="image/carter_inox.jpeg" alt="Carter de protection en inox" loading="lazy" width="1200" height="800" />
+            <figcaption>Carter de protection en inox</figcaption>
+          </figure>
+          <figure>
+            <img src="image/garde-corps_volute.jpeg" alt="Garde-corps en fer forgé voluté" loading="lazy" width="1200" height="800" />
+            <figcaption>Garde-corps en fer forgé voluté</figcaption>
+          </figure>
+          <figure>
+            <img src="image/support_moule.jpg" alt="Support de moule" loading="lazy" width="1200" height="800" />
+            <figcaption>Support de moule</figcaption>
+          </figure>
+          <figure>
+            <img src="image/grille_goodyear.jpg" alt="Grille extérieure galvanisée" loading="lazy" width="1200" height="800" />
+            <figcaption>Grille extérieure galvanisée</figcaption>
+          </figure>
+        </div>
+
+        <button class="carousel-btn next" aria-label="Suivant">⟩</button>
+      </div>
+    </section>
+
+    <!-- Lightbox plein écran -->
+    <div id="fullscreenContainer" aria-hidden="true">
+      <button id="btnQuitterPleinEcran" aria-label="Fermer">✖</button>
+      <img id="fullscreenImage" src="" alt="" />
+      <p id="fullscreenCaption"></p>
+    </div>
+
+    <!-- Contact -->
+    <section id="contact" class="fade-in">
+      <h2>Contactez-nous</h2>
+      <form action="https://formspree.io/f/mwpqeljj" method="POST">
+        <label for="nom">Nom :</label><br />
+        <input type="text" id="nom" name="nom" required /><br />
+
+        <label for="email">Email :</label><br />
+        <input type="email" id="email" name="email" required /><br />
+
+        <label for="objet">Objet :</label><br />
+        <select id="objet" name="objet" required>
+          <option value="">-- Choisir un objet --</option>
+          <option value="demande-devis">Demande de devis</option>
+          <option value="infos-techniques">Informations techniques</option>
+          <option value="prise-rdv">Prise de rendez-vous</option>
+          <option value="autre">Autre</option>
+        </select><br />
+
+        <label for="message">Message :</label><br />
+        <textarea id="message" name="message" rows="5" required></textarea><br />
+
+        <input type="hidden" name="_subject" value="Message depuis le site CS2T">
+        <input type="hidden" name="_language" value="fr">
+
+        <button type="submit">Envoyer</button>
+      </form>
+
+      <div class="infos-contact">
+        <p>📞 Téléphone : <a href="tel:0322528546">03 22 52 58 46</a></p>
+        <p>✉️ Email : <a href="mailto:cs2t@orange.fr">cs2t@orange.fr</a></p>
+        <p>📍 Adresse : 4 rue Vignacourt, 80310 La Chaussée-Tirancourt</p>
+        <p>🕒 Horaires d’ouverture :</p>
+        <ul class="horaires">
+          <li>Lundi – Vendredi : 08h00 – 17h00</li>
+          <li>Samedi et Dimanche : Fermé</li>
+        </ul>
+
+        <iframe 
+          src="https://www.google.com/maps?q=4+rue+Vignacourt,+80310+La+Chaussée+Tirancourt&output=embed"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
     <p>&copy; <span id="copyright-year"></span> SARL CS2T. Tous droits réservés.</p>
   </footer>
 
-  <!-- Script JavaScript -->
+  <!-- Bouton haut de page -->
+  <button id="btnScrollTop" title="Remonter" aria-label="Remonter">↑</button>
+
   <script>
-    // Animation d'ouverture
-window.addEventListener("load", () => {
-  const overlay = document.getElementById("loading-overlay");
-  overlay.style.opacity = "0";
-  setTimeout(() => {
-    overlay.style.display = "none";
-  }, 1000); // après le fondu
-});
-
-  document.addEventListener('DOMContentLoaded', () => {
-    // PLEIN ÉCRAN
-    const images = document.querySelectorAll('.imagePleinEcran');
-    const container = document.getElementById('fullscreenContainer');
-    const fullscreenImage = document.getElementById('fullscreenImage');
-    const btnQuitter = document.getElementById('btnQuitterPleinEcran');
-
-    images.forEach(img => {
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', () => {
-        fullscreenImage.src = img.src;
-        container.style.display = 'flex';
-        if (container.requestFullscreen) {
-          container.requestFullscreen();
-        } else if (container.webkitRequestFullscreen) {
-          container.webkitRequestFullscreen();
-        } else if (container.msRequestFullscreen) {
-          container.msRequestFullscreen();
-        }
-      });
-    });
-
-    fullscreenImage.addEventListener('mousemove', (e) => {
-      const rect = fullscreenImage.getBoundingClientRect();
-      const x = ((e.clientX - rect.left) / rect.width) * 100;
-      const y = ((e.clientY - rect.top) / rect.height) * 100;
-      fullscreenImage.style.transformOrigin = `${x}% ${y}%`;
-      fullscreenImage.style.transform = 'scale(2)';
-    });
-
-    fullscreenImage.addEventListener('mouseleave', () => {
-      fullscreenImage.style.transform = 'scale(1)';
-    });
-
-    btnQuitter.addEventListener('click', () => {
-      if (document.exitFullscreen) {
-        document.exitFullscreen();
-      } else if (document.webkitExitFullscreen) {
-        document.webkitExitFullscreen();
-      } else if (document.msExitFullscreen) {
-        document.msExitFullscreen();
-      }
-      container.style.display = 'none';
-      fullscreenImage.src = '';
-    });
-
-    document.addEventListener('fullscreenchange', () => {
-      if (!document.fullscreenElement) {
-        container.style.display = 'none';
-        fullscreenImage.src = '';
+    // ===================== ANIMATION D'OUVERTURE =====================
+    window.addEventListener("load", () => {
+      const overlay = document.getElementById("loading-overlay");
+      if (overlay) {
+        overlay.style.opacity = "0";
+        setTimeout(() => { overlay.style.display = "none"; }, 1000);
       }
     });
 
-    // BOUTON HAUT DE PAGE
-    const btnScrollTop = document.getElementById('btnScrollTop');
-    window.addEventListener('scroll', () => {
-      btnScrollTop.style.display = window.scrollY > 200 ? 'block' : 'none';
-    });
-    btnScrollTop.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
+    // Tout le reste une fois le DOM prêt
+    document.addEventListener('DOMContentLoaded', () => {
+      // ===================== BOUTON HAUT DE PAGE =====================
+      const btnScrollTop = document.getElementById('btnScrollTop');
+      if (btnScrollTop) {
+        window.addEventListener('scroll', () => {
+          btnScrollTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+        });
+        btnScrollTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
 
-    // ANNÉE DYNAMIQUE
-    document.getElementById('copyright-year').textContent = new Date().getFullYear();
+      // ===================== ANNÉE DYNAMIQUE =====================
+      const y = document.getElementById('copyright-year');
+      if (y) y.textContent = new Date().getFullYear();
 
-    // EFFET FADE-IN
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('fade-in-visible');
-          observer.unobserve(entry.target);
+      // ===================== EFFET FADE-IN =====================
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+      // ===================== CARROUSEL =====================
+      const track = document.querySelector('.carousel-track');
+      const prevBtn = document.querySelector('.carousel-btn.prev');
+      const nextBtn = document.querySelector('.carousel-btn.next');
+      const carouselImages = document.querySelectorAll('.carousel-track img');
+      let index = 0;
+
+      function updateCarousel() {
+        if (!carouselImages.length || !track) return;
+        const slideWidth = carouselImages[0].clientWidth;
+        track.style.transform = `translateX(-${index * slideWidth}px)`;
+      }
+
+      let autoSlide = null;
+      function startAuto() {
+        if (autoSlide) clearInterval(autoSlide);
+        autoSlide = setInterval(() => {
+          index = (index + 1) % carouselImages.length;
+          updateCarousel();
+        }, 5000);
+      }
+      if (carouselImages.length) {
+        startAuto();
+        window.addEventListener('resize', updateCarousel);
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+          index = (index - 1 + carouselImages.length) % carouselImages.length;
+          updateCarousel(); startAuto();
+        });
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+          index = (index + 1) % carouselImages.length;
+          updateCarousel(); startAuto();
+        });
+
+        // Pause auto au survol/focus + navigation clavier
+        const carouselContainer = document.querySelector('.carousel-container');
+        if (carouselContainer) {
+          ['mouseenter','focusin'].forEach(evt => {
+            carouselContainer.addEventListener(evt, () => { if (autoSlide) clearInterval(autoSlide); });
+          });
+          ['mouseleave','focusout'].forEach(evt => {
+            carouselContainer.addEventListener(evt, () => startAuto());
+          });
+          carouselContainer.setAttribute('tabindex', '0');
+          carouselContainer.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') { index = (index + 1) % carouselImages.length; updateCarousel(); }
+            if (e.key === 'ArrowLeft')  { index = (index - 1 + carouselImages.length) % carouselImages.length; updateCarousel(); }
+          });
+        }
+      }
+
+      // ===================== PLEIN ÉCRAN + LÉGENDE (carrousel + .imagePleinEcran) =====================
+      const fullscreenContainer = document.getElementById('fullscreenContainer');
+      const fullscreenImage = document.getElementById('fullscreenImage');
+      const fullscreenCaption = document.getElementById('fullscreenCaption');
+      const btnQuitter = document.getElementById('btnQuitterPleinEcran');
+
+      const lightboxTargets = [
+        ...document.querySelectorAll('.carousel-track img'),
+        ...document.querySelectorAll('.imagePleinEcran')
+      ];
+      lightboxTargets.forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+          if (!fullscreenContainer || !fullscreenImage) return;
+          fullscreenImage.src = img.src;
+          if (fullscreenCaption) fullscreenCaption.textContent = img.alt || "Image";
+          fullscreenContainer.style.display = 'flex';
+          if (fullscreenContainer.requestFullscreen) fullscreenContainer.requestFullscreen();
+          else if (fullscreenContainer.webkitRequestFullscreen) fullscreenContainer.webkitRequestFullscreen();
+          else if (fullscreenContainer.msRequestFullscreen) fullscreenContainer.msRequestFullscreen();
+        });
+      });
+
+      if (fullscreenImage) {
+        fullscreenImage.addEventListener('mousemove', (e) => {
+          const rect = fullscreenImage.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width) * 100;
+          const y = ((e.clientY - rect.top) / rect.height) * 100;
+          fullscreenImage.style.transformOrigin = `${x}% ${y}%`;
+          fullscreenImage.style.transform = 'scale(2)';
+        });
+        fullscreenImage.addEventListener('mouseleave', () => {
+          fullscreenImage.style.transform = 'scale(1)';
+        });
+      }
+
+      if (btnQuitter) {
+        btnQuitter.addEventListener('click', () => {
+          if (document.exitFullscreen) document.exitFullscreen();
+          else if (document.webkitExitFullscreen) document.webkitExitFullscreen();
+          else if (document.msExitFullscreen) document.msExitFullscreen();
+          if (fullscreenContainer) fullscreenContainer.style.display = 'none';
+          if (fullscreenImage) fullscreenImage.src = '';
+        });
+      }
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && fullscreenContainer) {
+          fullscreenContainer.style.display = 'none';
+          if (fullscreenImage) fullscreenImage.src = '';
         }
       });
-    }, { threshold: 0.1 });
 
-    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-  });
-    // === CARROUSEL ===
-const track = document.querySelector('.carousel-track');
-const prevBtn = document.querySelector('.carousel-btn.prev');
-const nextBtn = document.querySelector('.carousel-btn.next');
-const images = document.querySelectorAll('.carousel-track img');
-let index = 0;
+      // ===================== SURlIGNAGE DU LIEN ACTIF =====================
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a');
 
-function updateCarousel() {
-  const slideWidth = images[0].clientWidth;
-  track.style.transform = `translateX(-${index * slideWidth}px)`;
-}
+      const accueilAnchor = document.getElementById('accueil');
+      const toObserve = [...sections];
+      if (accueilAnchor) toObserve.unshift(accueilAnchor);
 
-// Auto défilement
-let autoSlide = setInterval(() => {
-  index = (index + 1) % images.length;
-  updateCarousel();
-}, 5000);
+      const addActive = (id) => {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${id}"]`);
+        if (link) link.classList.add('active');
+      };
 
-// Flèches
-prevBtn.addEventListener('click', () => {
-  index = (index - 1 + images.length) % images.length;
-  updateCarousel();
-  clearInterval(autoSlide);
-});
-
-nextBtn.addEventListener('click', () => {
-  index = (index + 1) % images.length;
-  updateCarousel();
-  clearInterval(autoSlide);
-});
-
-window.addEventListener('resize', updateCarousel);
-// === PLEIN ÉCRAN POUR LE CARROUSEL ===
-images.forEach(img => {
-  img.style.cursor = 'zoom-in';
-  img.addEventListener('click', () => {
-    fullscreenImage.src = img.src;
-    fullscreenContainer.style.display = 'flex';
-    if (fullscreenContainer.requestFullscreen) {
-      fullscreenContainer.requestFullscreen();
-    } else if (fullscreenContainer.webkitRequestFullscreen) {
-      fullscreenContainer.webkitRequestFullscreen();
-    } else if (fullscreenContainer.msRequestFullscreen) {
-      fullscreenContainer.msRequestFullscreen();
-    }
-  });
-});
-
-fullscreenImage.addEventListener('mousemove', (e) => {
-  const rect = fullscreenImage.getBoundingClientRect();
-  const x = ((e.clientX - rect.left) / rect.width) * 100;
-  const y = ((e.clientY - rect.top) / rect.height) * 100;
-  fullscreenImage.style.transformOrigin = `${x}% ${y}%`;
-  fullscreenImage.style.transform = 'scale(2)';
-});
-
-fullscreenImage.addEventListener('mouseleave', () => {
-  fullscreenImage.style.transform = 'scale(1)';
-});
-
-btnQuitter.addEventListener('click', () => {
-  if (document.exitFullscreen) {
-    document.exitFullscreen();
-  } else if (document.webkitExitFullscreen) {
-    document.webkitExitFullscreen();
-  } else if (document.msExitFullscreen) {
-    document.msExitFullscreen();
-  }
-  fullscreenContainer.style.display = 'none';
-  fullscreenImage.src = '';
-});
-
-document.addEventListener('fullscreenchange', () => {
-  if (!document.fullscreenElement) {
-    fullscreenContainer.style.display = 'none';
-fullscreenImage.src = img.src;
-fullscreenCaption.textContent = img.alt || "Image en plein écran";
-  }
-});
-
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            if (id) addActive(id);
+          }
+        });
+      }, { threshold: 0.6 });
+      toObserve.forEach(el => spy.observe(el));
+    });
   </script>
-
-  <button id="btnScrollTop" title="Remonter">↑</button>
 </body>
 </html>
-
-
-
