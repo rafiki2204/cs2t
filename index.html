@@ -296,29 +296,33 @@
     <section id="contact" class="fade-in">
       <h2>Contactez-nous</h2>
       <form action="https://formspree.io/f/mwpqeljj" method="POST">
-        <label for="nom">Nom :</label><br />
-        <input type="text" id="nom" name="nom" required /><br />
+  <label for="nom">Nom :</label><br />
+  <input type="text" id="nom" name="nom" autocomplete="name" required /><br />
 
-        <label for="email">Email :</label><br />
-        <input type="email" id="email" name="email" required /><br />
+  <label for="email">Email :</label><br />
+  <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required /><br />
 
-        <label for="objet">Objet :</label><br />
-        <select id="objet" name="objet" required>
-          <option value="">-- Choisir un objet --</option>
-          <option value="demande-devis">Demande de devis</option>
-          <option value="infos-techniques">Informations techniques</option>
-          <option value="prise-rdv">Prise de rendez-vous</option>
-          <option value="autre">Autre</option>
-        </select><br />
+  <label for="objet">Objet :</label><br />
+  <select id="objet" name="objet" required>
+    <option value="">-- Choisir un objet --</option>
+    <option value="demande-devis">Demande de devis</option>
+    <option value="infos-techniques">Informations techniques</option>
+    <option value="prise-rdv">Prise de rendez-vous</option>
+    <option value="autre">Autre</option>
+  </select><br />
 
-        <label for="message">Message :</label><br />
-        <textarea id="message" name="message" rows="5" required></textarea><br />
+  <label for="message">Message :</label><br />
+  <textarea id="message" name="message" rows="5" required></textarea><br />
 
-        <input type="hidden" name="_subject" value="Message depuis le site CS2T">
-        <input type="hidden" name="_language" value="fr">
+  <!-- Champ honeypot (invisible aux vrais utilisateurs) -->
+  <input type="text" name="_gotcha" style="display:none">
 
-        <button type="submit">Envoyer</button>
-      </form>
+  <!-- Hidden fields Formspree -->
+  <input type="hidden" name="_subject" value="Message depuis le site CS2T">
+  <input type="hidden" name="_language" value="fr">
+
+  <button type="submit">Envoyer</button>
+</form>
 
       <div class="infos-contact">
         <p>📞 Téléphone : <a href="tel:0322528546">03 22 52 58 46</a></p>
@@ -513,4 +517,5 @@
   </script>
 </body>
 </html>
+
 
