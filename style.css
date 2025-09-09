@@ -412,3 +412,16 @@ form button[type="submit"]:hover {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
+
+.carousel-track figure {
+  margin: 0;
+  text-align: center;
+  color: #2c3e50;
+  font-size: 0.9em;
+}
+
+.carousel-track figcaption {
+  margin-top: 8px;
+  font-style: italic;
+  color: #555;
+}
