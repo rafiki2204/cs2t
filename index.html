@@ -112,7 +112,12 @@
     }
 
     /* ===================== Galerie / Carrousel ===================== */
-    .carousel-container { position: relative; max-width: 100%; overflow: hidden; margin: auto; }
+    .carousel-container {
+      position: relative;
+      max-width: 600px;   /* ✅ limite et centre le carrousel (option 2) */
+      margin: 0 auto;
+      overflow: hidden;
+    }
     .carousel-btn {
       position: absolute; top: 50%; transform: translateY(-50%);
       font-size: 2rem; background: rgba(0,0,0,0.5); color: #fff; border: none;
@@ -264,19 +269,19 @@
 
         <div class="carousel-track">
           <figure>
-            <img src="image/carter_inox.jpeg" alt="Carter de protection en inox" loading="lazy" width="1200" height="800" />
+            <img src="image/carter_inox.jpeg" alt="Carter de protection en inox" loading="lazy" decoding="async" width="1200" height="800" />
             <figcaption>Carter de protection en inox</figcaption>
           </figure>
           <figure>
-            <img src="image/garde-corps_volute.jpeg" alt="Garde-corps en fer forgé voluté" loading="lazy" width="1200" height="800" />
+            <img src="image/garde-corps_volute.jpeg" alt="Garde-corps en fer forgé voluté" loading="lazy" decoding="async" width="1200" height="800" />
             <figcaption>Garde-corps en fer forgé voluté</figcaption>
           </figure>
           <figure>
-            <img src="image/support_moule.jpg" alt="Support de moule" loading="lazy" width="1200" height="800" />
+            <img src="image/support_moule.jpg" alt="Support de moule" loading="lazy" decoding="async" width="1200" height="800" />
             <figcaption>Support de moule</figcaption>
           </figure>
           <figure>
-            <img src="image/grille_goodyear.jpg" alt="Grille extérieure galvanisée" loading="lazy" width="1200" height="800" />
+            <img src="image/grille_goodyear.jpg" alt="Grille extérieure galvanisée" loading="lazy" decoding="async" width="1200" height="800" />
             <figcaption>Grille extérieure galvanisée</figcaption>
           </figure>
         </div>
@@ -296,33 +301,33 @@
     <section id="contact" class="fade-in">
       <h2>Contactez-nous</h2>
       <form action="https://formspree.io/f/mwpqeljj" method="POST">
-  <label for="nom">Nom :</label><br />
-  <input type="text" id="nom" name="nom" autocomplete="name" required /><br />
+        <label for="nom">Nom :</label><br />
+        <input type="text" id="nom" name="nom" autocomplete="name" required /><br />
 
-  <label for="email">Email :</label><br />
-  <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required /><br />
+        <label for="email">Email :</label><br />
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required /><br />
 
-  <label for="objet">Objet :</label><br />
-  <select id="objet" name="objet" required>
-    <option value="">-- Choisir un objet --</option>
-    <option value="demande-devis">Demande de devis</option>
-    <option value="infos-techniques">Informations techniques</option>
-    <option value="prise-rdv">Prise de rendez-vous</option>
-    <option value="autre">Autre</option>
-  </select><br />
+        <label for="objet">Objet :</label><br />
+        <select id="objet" name="objet" required>
+          <option value="">-- Choisir un objet --</option>
+          <option value="demande-devis">Demande de devis</option>
+          <option value="infos-techniques">Informations techniques</option>
+          <option value="prise-rdv">Prise de rendez-vous</option>
+          <option value="autre">Autre</option>
+        </select><br />
 
-  <label for="message">Message :</label><br />
-  <textarea id="message" name="message" rows="5" required></textarea><br />
+        <label for="message">Message :</label><br />
+        <textarea id="message" name="message" rows="5" required></textarea><br />
 
-  <!-- Champ honeypot (invisible aux vrais utilisateurs) -->
-  <input type="text" name="_gotcha" style="display:none">
+        <!-- Champ honeypot (invisible aux vrais utilisateurs) -->
+        <input type="text" name="_gotcha" style="display:none">
 
-  <!-- Hidden fields Formspree -->
-  <input type="hidden" name="_subject" value="Message depuis le site CS2T">
-  <input type="hidden" name="_language" value="fr">
+        <!-- Hidden fields Formspree -->
+        <input type="hidden" name="_subject" value="Message depuis le site CS2T">
+        <input type="hidden" name="_language" value="fr">
 
-  <button type="submit">Envoyer</button>
-</form>
+        <button type="submit">Envoyer</button>
+      </form>
 
       <div class="infos-contact">
         <p>📞 Téléphone : <a href="tel:0322528546">03 22 52 58 46</a></p>
@@ -517,5 +522,3 @@
   </script>
 </body>
 </html>
-
-
