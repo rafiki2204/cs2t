@@ -122,14 +122,14 @@ section {
 /* ===================== CARROUSEL ===================== */
 .carousel-container {
   position: relative;
-  max-width: 600px;     /* Option 2 : carrousel centré et limité */
+  max-width: 450px;     /* Option 2 : carrousel centré et limité */
   overflow: hidden;
   margin: 0 auto;
   min-height: 420px;    /* évite les sauts de mise en page */
 }
 .carousel-track {
   display: flex;
-  transition: transform 0.5s ease;
+  transition: transform 2s ease;
   width: max-content;
 }
 .carousel-track figure {
@@ -323,3 +323,4 @@ footer {
   header p { font-size: 1em; }
   .carousel-btn { font-size: 1.6rem; padding: 6px 10px; }
 }
+
