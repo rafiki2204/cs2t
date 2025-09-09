@@ -425,3 +425,9 @@ form button[type="submit"]:hover {
   font-style: italic;
   color: #555;
 }
+.skip-link {
+  position: absolute; left: -9999px; top: 0;
+  background:#1abc9c; color:#fff; padding:10px 14px; border-radius:6px;
+}
+.skip-link:focus { left: 10px; top: 10px; z-index: 10000; }
+
