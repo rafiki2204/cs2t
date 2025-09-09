@@ -267,7 +267,7 @@ footer {
 }
 .carousel-container {
   position: relative;
-  max-width: 600px;
+  max-width: 400px;
   overflow: hidden;
   margin: 0 auto;
 }
@@ -280,12 +280,14 @@ footer {
 
 .carousel-track img {
   width: 100%;
-  max-width: 600px;
+  max-width: 400px;
+  height: auto;
   margin: 0 auto;
   display: block;
   object-fit: cover;
   border-radius: 10px;
   flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
 
 .carousel-btn {
@@ -430,5 +432,6 @@ form button[type="submit"]:hover {
   background:#1abc9c; color:#fff; padding:10px 14px; border-radius:6px;
 }
 .skip-link:focus { left: 10px; top: 10px; z-index: 10000; }
+
 
 
