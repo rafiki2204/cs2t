@@ -1,4 +1,6 @@
-/* ===================== RESET & BASE ===================== */
+/* ===========================================================
+   RESET & VARIABLES
+   =========================================================== */
 :root{
   --blue:#3498db;         /* bleu électrique */
   --blue-dark:#2980b9;    /* bleu foncé/nav */
@@ -6,321 +8,277 @@
   --text:#2c3e50;         /* texte principal */
   --muted:#555;           /* détails/légendes */
   --bg:#ffffff;           /* fond */
+  --shadow:0 3px 12px rgba(0,0,0,.08);
+  --radius:12px;
 }
 
-* { box-sizing: border-box; }
-
-body {
-  margin: 0;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  line-height: 1.55;
+/* Base */
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.55;
+}
+h2{
+  border-bottom:2px solid var(--blue-dark);
+  padding-bottom:10px;
+  margin-bottom:20px;
+  color:#1f2d3d;
 }
 
-/* ===================== TYPO ===================== */
-h2 {
-  border-bottom: 2px solid var(--blue-dark);
-  padding-bottom: 10px;
-  margin-bottom: 20px;
-  color: #1f2d3d;
+/* ===========================================================
+   HEADER
+   =========================================================== */
+header{
+  background-color:var(--blue);
+  color:#fff;
+  padding:40px 20px;
+  text-align:center;
+}
+header h1{margin:0;font-size:2.8em;letter-spacing:1px;}
+header p{font-size:1.2em;margin-top:10px;color:#dce3ea;}
+.logo{display:flex;justify-content:center;align-items:center;margin-bottom:10px;}
+.logo svg{max-width:100%;height:auto;display:block;}
+
+/* ===========================================================
+   NAVIGATION
+   =========================================================== */
+nav{
+  position:sticky;top:0;
+  background-color:var(--blue-dark);
+  display:flex;justify-content:center;flex-wrap:wrap;gap:15px;
+  padding:15px 0;z-index:1000;
+  box-shadow:0 2px 5px rgba(0,0,0,0.2);
+}
+nav a{
+  position:relative;color:#fff;text-decoration:none;
+  font-weight:bold;padding:8px 16px;border-radius:6px;
+  transition:background 0.3s,color 0.3s;
+}
+nav a:hover{background-color:var(--teal);}
+nav a::after{
+  content:'';position:absolute;left:14px;right:14px;bottom:6px;height:2px;
+  background-color:var(--teal);transform:scaleX(0);transform-origin:left;
+  transition:transform 0.25s ease;
+}
+nav a:hover::after{transform:scaleX(1);}
+nav a.active{background:rgba(26,188,156,0.18);}
+
+/* ===========================================================
+   SECTIONS GÉNÉRIQUES
+   =========================================================== */
+section{
+  padding:40px 20px;
+  max-width:1000px;
+  margin:80px auto 0;
+  background-color:#fff;
+  box-shadow:var(--shadow);
+  border-radius:10px;
+  scroll-margin-top:90px;
+}
+#atelier p{line-height:1.6;color:var(--text);}
+
+/* ===========================================================
+   GALERIE
+   =========================================================== */
+.galerie-images{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;justify-items:center;
+}
+.galerie-images img{
+  width:100%;max-width:300px;border-radius:8px;
+  transition:transform .2s ease,box-shadow .2s ease;
+  box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.galerie-images img:hover{transform:scale(1.03);box-shadow:0 4px 16px rgba(0,0,0,0.2);}
+
+/* ===========================================================
+   CARROUSEL
+   =========================================================== */
+.carousel-container{
+  position:relative;max-width:450px;overflow:hidden;
+  margin:0 auto;min-height:420px;
+}
+.carousel-track{
+  display:flex;transition:transform 2s ease;width:max-content;
+}
+.carousel-track figure{
+  margin:0;text-align:center;color:var(--text);
+  width:min(100%,640px);padding:0 6px;
+}
+.carousel-track img{
+  width:100%;height:auto;display:block;object-fit:cover;
+  border-radius:10px;flex-shrink:0;box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+.carousel-track figcaption{
+  margin-top:8px;font-style:italic;color:var(--muted);font-size:.95rem;
+}
+.carousel-btn{
+  position:absolute;top:50%;transform:translateY(-50%);
+  font-size:2rem;background:rgba(0,0,0,.5);color:#fff;
+  border:none;padding:10px;cursor:pointer;z-index:10;border-radius:8px;
+}
+.carousel-btn.prev{left:10px;}
+.carousel-btn.next{right:10px;}
+
+/* ===========================================================
+   LIGHTBOX
+   =========================================================== */
+#fullscreenContainer{
+  position:fixed;inset:0;background:rgba(0,0,0,0.9);
+  display:none;align-items:center;justify-content:center;flex-direction:column;
+  z-index:9999;padding:20px;
+}
+#fullscreenContainer img{max-width:90%;max-height:80vh;border-radius:8px;}
+#btnQuitterPleinEcran{
+  position:absolute;top:20px;right:20px;
+  background:var(--blue);color:#fff;font-size:24px;
+  border:none;border-radius:50%;width:45px;height:45px;cursor:pointer;
+  box-shadow:0 0 10px rgba(0,0,0,0.3);transition:background .3s;
+}
+#btnQuitterPleinEcran:hover{background:#1e70bf;}
+
+/* ===========================================================
+   FORMULAIRE
+   =========================================================== */
+form label{font-weight:bold;color:#333;}
+form input,form select,form textarea,form button{
+  width:100%;max-width:500px;padding:10px;margin-bottom:15px;
+  border-radius:6px;border:1px solid #ccc;font-size:16px;
+  transition:border-color .3s ease;
+}
+form input:focus,form select:focus,form textarea:focus{border-color:var(--teal);outline:none;}
+form button[type="submit"]{
+  background:var(--teal);color:#fff;border:none;cursor:pointer;
+  transition:background .3s;
+}
+form button[type="submit"]:hover{background:#16a085;}
+.infos-contact{margin-top:30px;line-height:1.6;}
+.horaires{list-style:none;padding-left:0;}
+
+/* ===========================================================
+   FOOTER
+   =========================================================== */
+footer{
+  background-color:var(--blue-dark);
+  color:#fff;text-align:center;padding:20px;
 }
 
-/* ===================== HEADER ===================== */
-header {
-  background-color: var(--blue);
-  color: #fff;
-  padding: 40px 20px;
-  text-align: center;
+/* ===========================================================
+   BOUTON HAUT DE PAGE
+   =========================================================== */
+#btnScrollTop{
+  position:fixed;bottom:20px;right:20px;
+  background:var(--blue);color:#fff;border:none;border-radius:50%;
+  width:45px;height:45px;font-size:20px;cursor:pointer;
+  display:none;box-shadow:0 0 10px rgba(0,0,0,0.3);
+  transition:background .3s;
 }
-header h1 {
-  margin: 0;
-  font-size: 2.8em;
-  letter-spacing: 1px;
-}
-header p {
-  font-size: 1.2em;
-  margin-top: 10px;
-  color: #dce3ea;
-}
-.logo { display:flex; justify-content:center; align-items:center; margin-bottom:10px; }
-.logo svg { max-width:100%; height:auto; display:block; }
+#btnScrollTop:hover{background:#1e70bf;}
 
-/* ===================== NAVIGATION (une seule version) ===================== */
-nav {
-  position: sticky;
-  top: 0;
-  background-color: var(--blue-dark);
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 15px;
-  padding: 15px 0;
-  z-index: 1000;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+/* ===========================================================
+   OVERLAY DE CHARGEMENT
+   =========================================================== */
+#loading-overlay{
+  position:fixed;inset:0;background:#2c3e50;color:#fff;
+  display:flex;flex-direction:column;justify-content:center;align-items:center;
+  z-index:9999;transition:opacity 1s ease;
 }
-nav a {
-  position: relative;
-  color: #ffffff;
-  text-decoration: none;
-  font-weight: bold;
-  padding: 8px 16px;
-  border-radius: 6px;
-  transition: background 0.3s, color .3s;
-}
-nav a:hover { background-color: var(--teal); }
-/* soulignement animé */
-nav a::after {
-  content: '';
-  position: absolute;
-  left: 14px; right:14px; bottom: 6px;
-  height: 2px;
-  background-color: var(--teal);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.25s ease;
-}
-nav a:hover::after { transform: scaleX(1); }
-/* lien actif via JS */
-nav a.active { background: rgba(26,188,156,0.18); }
+.loader h1{font-size:2.5em;margin:0;animation:fadeIn 2s ease-in-out;}
+.loader p{margin-top:10px;font-size:1.2em;opacity:.7;animation:fadeIn 2s ease-in-out .5s;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
 
-/* ===================== SECTIONS ===================== */
-section {
-  padding: 40px 20px;
-  max-width: 1000px;
-  margin: 80px auto 0;
-  background-color: #ffffff;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  border-radius: 10px;
-  scroll-margin-top: 90px; /* évite que la nav cache le titre */
+/* ===========================================================
+   SKIP LINK
+   =========================================================== */
+.skip-link{
+  position:absolute;left:-9999px;top:0;
+  background:var(--teal);color:#fff;padding:10px 14px;border-radius:6px;
 }
+.skip-link:focus{left:10px;top:10px;z-index:10000;}
 
-/* ===================== ATELIER ===================== */
-#atelier p { line-height: 1.6; color: var(--text); }
+/* ===========================================================
+   EFFET FADE-IN
+   =========================================================== */
+.fade-in{opacity:0;transform:translateY(40px);transition:opacity .8s ease-out,transform .8s ease-out;}
+.fade-in-visible{opacity:1;transform:translateY(0);}
 
-/* ===================== GALERIE ===================== */
-/* ⚠️ Ne PAS styliser #galerie en grid (ça casse le carrousel) */
-/* Si tu as une grille ailleurs, utilise .galerie-images */
-.galerie-images {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 20px;
-  justify-items: center;
+/* ===========================================================
+   GALERIE ATELIER
+   =========================================================== */
+.galerie-ateliers{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:15px;padding:10px;
 }
-.galerie-images img {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 8px;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+.galerie-ateliers img{
+  width:100%;height:auto;border-radius:5px;
+  box-shadow:0 2px 8px rgba(0,0,0,0.15);
+  transition:transform .3s ease;cursor:pointer;
 }
-.galerie-images img:hover {
-  transform: scale(1.03);
-  box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
+.galerie-ateliers img:hover{transform:scale(1.05);}
 
-/* ===================== CARROUSEL ===================== */
-.carousel-container {
-  position: relative;
-  max-width: 450px;     /* Option 2 : carrousel centré et limité */
-  overflow: hidden;
-  margin: 0 auto;
-  min-height: 420px;    /* évite les sauts de mise en page */
-}
-.carousel-track {
-  display: flex;
-  transition: transform 2s ease;
-  width: max-content;
-}
-.carousel-track figure {
-  margin: 0;
-  text-align: center;
-  color: var(--text);
-  width: min(100%, 640px);
-  padding: 0 6px;
-}
-.carousel-track img {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  border-radius: 10px;
-  flex-shrink: 0;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-.carousel-track figcaption {
-  margin-top: 8px;
-  font-style: italic;
-  color: var(--muted);
-  font-size: 0.95rem;
-}
-.carousel-btn {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 2rem;
-  background-color: rgba(0,0,0,0.5);
-  color: white;
-  border: none;
-  padding: 10px;
-  cursor: pointer;
-  z-index: 10;
-  border-radius: 8px;
-}
-.carousel-btn.prev { left: 10px; }
-.carousel-btn.next { right: 10px; }
+/* ===========================================================
+   NOUVELLE DISPOSITION MANUGREG-STYLE
+   =========================================================== */
 
-/* ===================== LIGHTBOX (plein écran) ===================== */
-#fullscreenContainer {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.9);
-  display: none;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  z-index: 9999;
-  padding: 20px;
+/* --- HERO --- */
+.hero{
+  position:relative;overflow:hidden;background:#000;isolation:isolate;
 }
-#fullscreenContainer img {
-  max-width: 90%;
-  max-height: 80vh;
-  border-radius: 8px;
+.hero-bg{
+  position:absolute;inset:0;width:100%;height:100%;
+  object-fit:cover;filter:brightness(.55);
 }
-#btnQuitterPleinEcran {
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  background: var(--blue);
-  color: white;
-  font-size: 24px;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  cursor: pointer;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: background 0.3s;
+.hero-inner{
+  position:relative;max-width:1100px;margin:0 auto;padding:100px 20px;text-align:center;
 }
-#btnQuitterPleinEcran:hover { background: #1e70bf; }
+.hero h1{
+  color:#fff;font-weight:800;font-size:clamp(1.8rem,3.5vw,2.6rem);
+  margin:0 auto;max-width:900px;letter-spacing:.5px;
+}
+.btn-cta{
+  display:inline-block;margin-top:20px;background:var(--teal);color:#fff;
+  text-decoration:none;padding:12px 22px;border-radius:10px;font-weight:700;
+  border:1px solid rgba(255,255,255,.1);transition:background .25s ease;
+}
+.btn-cta:hover{background:#159a83;}
 
-/* ===================== FORMULAIRE ===================== */
-form label { font-weight: bold; color: #333; }
-form input, form select, form textarea, form button {
-  width: 100%;
-  max-width: 500px;
-  padding: 10px;
-  margin-bottom: 15px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 16px;
-  transition: border-color 0.3s ease;
+/* --- KPI --- */
+.kpi{
+  padding:30px 16px;background:#f7fafc;border-top:4px solid var(--blue-dark);
+  border-bottom:1px solid #e9eef3;
 }
-form input:focus, form select:focus, form textarea:focus {
-  border-color: var(--teal);
-  outline: none;
+.kpi-grid{
+  max-width:1100px;margin:0 auto;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;
 }
-form button[type="submit"] {
-  background-color: var(--teal);
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s;
+.kpi-card{
+  background:#eef6fd;border:1px solid #d9e9fa;border-radius:14px;
+  padding:26px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.05);
 }
-form button[type="submit"]:hover { background-color: #16a085; }
+.kpi-card strong{display:block;color:var(--blue-dark);font-size:24px;}
+.kpi-card span{color:#224;opacity:.7;}
 
-.infos-contact { margin-top: 30px; line-height: 1.6; }
-.horaires { list-style: none; padding-left: 0; }
-
-/* ===================== FOOTER ===================== */
-footer {
-  background-color: var(--blue-dark);
-  color: #ffffff;
-  text-align: center;
-  padding: 20px;
+/* --- BLOCS 2 COLONNES (prestations/habilitations) --- */
+.split{
+  max-width:1100px;margin:60px auto;display:grid;
+  grid-template-columns:1.1fr .9fr;gap:26px;align-items:stretch;
 }
-
-/* ===================== BOUTON HAUT DE PAGE ===================== */
-#btnScrollTop {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--blue);
-  color: white;
-  border: none;
-  border-radius: 50%;
-  width: 45px;
-  height: 45px;
-  font-size: 20px;
-  cursor: pointer;
-  display: none;
-  box-shadow: 0 0 10px rgba(0,0,0,0.3);
-  transition: background 0.3s;
+.split-col img{
+  display:block;width:100%;height:auto;border-radius:10px;
 }
-#btnScrollTop:hover { background: #1e70bf; }
-
-/* ===================== OVERLAY CHARGEMENT ===================== */
-#loading-overlay {
-  position: fixed;
-  inset: 0;
-  background-color: #2c3e50;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
-  transition: opacity 1s ease;
+.card-dark{
+  background:#111;color:#fff;border-radius:12px;padding:24px;
+  border:1px solid #222;box-shadow:0 4px 16px rgba(0,0,0,.25);
 }
-.loader h1 {
-  font-size: 2.5em;
-  margin: 0;
-  animation: fadeIn 2s ease-in-out;
+.card-dark h2{
+  border:none;padding:0;margin-top:0;margin-bottom:14px;color:#fff;text-transform:uppercase;
 }
-.loader p {
-  margin-top: 10px;
-  font-size: 1.2em;
-  opacity: 0.7;
-  animation: fadeIn 2s ease-in-out 0.5s;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-/* ===================== SKIP-LINK ===================== */
-.skip-link {
-  position: absolute; left: -9999px; top: 0;
-  background: var(--teal); color:#fff; padding:10px 14px; border-radius:6px;
-}
-.skip-link:focus { left: 10px; top: 10px; z-index: 10000; }
-
-/* ===================== EFFET FADE-IN ===================== */
-.fade-in { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease-out, transform 0.8s ease-out; }
-.fade-in-visible { opacity: 1; transform: translateY(0); }
-
-/* ===================== GALERIE ATELIER (grille libre) ===================== */
-.galerie-ateliers {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
-  padding: 10px;
-}
-.galerie-ateliers img {
-  width: 100%;
-  height: auto;
-  border-radius: 5px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  transition: transform 0.3s ease;
-  cursor: pointer;
-}
-.galerie-ateliers img:hover { transform: scale(1.05); }
-
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 600px) {
-  .logo svg { width: 80px; height: auto; }
-  header h1 { font-size: 2em; }
-  header p { font-size: 1em; }
-  .carousel-btn { font-size: 1.6rem; padding: 6px 10px; }
-}
-
+.ticks{list-style:none;padding:0;margin:0;display:grid;gap:10px;}
+.ticks li{display:flex;gap:10px;align-items:center;}
+.ticks li::before{
+  content:"";width:18px;height:18px;border-radius:999px;
+  background:var(--teal);box-shadow:inset 0 0 0 6px #111;
