@@ -1,70 +1,387 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+  <!-- SEO de base -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Photos de l'atelier - SARL CS2T</title>
+  <title>SARL CS2T – Chaudronnerie • Soudure • Tuyauterie</title>
+  <meta name="description" content="SARL CS2T : Spécialiste en chaudronnerie, soudure et fabrication métallique à La Chaussée Tirancourt." />
+  <meta name="keywords" content="chaudronnerie, soudure, inox, métal, fabrication, Amiens, CS2T" />
+  <meta name="author" content="SARL CS2T" />
+  <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
-<body>
-  <header>
-    <h1>Photos de l'atelier</h1>
-  </header>
-  
-  <nav>
-  <a href="index.html">Accueil</a>
-  <a href="index.html#atelier">L'atelier</a>
-  <a href="index.html#galerie">Galerie</a>
-  <a href="index.html#contact">Contact</a>
-</nav>
 
-  
-  <section id="atelier-photos">
-    <div class="galerie-ateliers">
-      <img src="image/facade_entreprise.png" alt="entreprise" />
-      <img src="image/cisaille.png" alt="cisaille" />
-      <img src="image/plieuse_rouge.png" alt="plieuse amada" />
-      <img src="image/plieuse_verte.png" alt="plieuse grosse épaisseur" />
-      <img src="image/scie_ruban.png" alt="scie à ruban" />
-      <img src="image/encocheuse.png" alt="encocheuse" />
-      <img src="image/poinconneuse.png" alt="poinçonneuse" />
+<body>
+  <!-- Skip to content -->
+  <a class="skip-link" href="#accueil">Passer au contenu</a>
+
+  <!-- Overlay de chargement -->
+  <div id="loading-overlay" aria-hidden="true">
+    <div class="loader">
+      <h1>SARL CS2T</h1>
+      <p>Chargement…</p>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="logo" aria-hidden="true">
+      <svg width="120" height="40" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
+        <rect width="300" height="100" fill="#3498db" />
+        <text x="40" y="90" font-family="Arial Black, sans-serif" font-size="48" fill="#ffffff">C</text>
+        <text x="90" y="70" font-family="Arial Black, sans-serif" font-size="36" fill="#ffffff">S</text>
+        <text x="140" y="50" font-family="Arial Black, sans-serif" font-size="26" fill="#ffffff">2</text>
+        <text x="180" y="30" font-family="Arial Black, sans-serif" font-size="20" fill="#ffffff">T</text>
+      </svg>
+    </div>
+    <h1>SARL CS2T</h1>
+    <p>Chaudronnerie & savoir-faire métallique</p>
+  </header>
+
+  <!-- Ancre accueil pour le lien du menu -->
+  <div id="accueil" aria-hidden="true"></div>
+
+  <!-- Navigation -->
+  <nav role="navigation" aria-label="Navigation principale">
+    <a href="#accueil">Accueil</a>
+    <a href="#atelier">L'atelier</a>
+    <a href="#services">Nos services</a>
+    <a href="#galerie">Galerie</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero" class="hero">
+    <!-- Option A : image -->
+    <!-- <div class="hero-bg" style="background-image:url('image/hero_soudure.jpg')"></div> -->
+    <!-- Option B : vidéo -->
+    <video class="hero-bg" autoplay muted loop playsinline>
+      <source src="video/soudure.mp4" type="video/mp4" />
+    </video>
+
+    <div class="hero-inner">
+      <h1>Experts en chaudronnerie et tuyauterie pour l’agroalimentaire</h1>
+      <div class="hero-actions">
+        <a href="#atelier" class="btn-cta">Découvrez-nous</a>
+      </div>
     </div>
   </section>
-<div id="fullscreenContainer" style="display:none;">
-  <button id="btnQuitterPleinEcran" aria-label="Fermer la vue plein écran">&times;</button>
-  <img id="fullscreenImage" src="" alt="Image agrandie" />
-</div>
-<script>
-  // Sélectionne toutes les images dans la galerie
-  const images = document.querySelectorAll('.galerie-ateliers img');
-  const fullscreenContainer = document.getElementById('fullscreenContainer');
-  const fullscreenImage = document.getElementById('fullscreenImage');
-  const btnQuitter = document.getElementById('btnQuitterPleinEcran');
 
-  // Quand on clique sur une image, on affiche la superposition avec l'image agrandie
-  images.forEach(img => {
-    img.addEventListener('click', () => {
-      fullscreenImage.src = img.src;
-      fullscreenImage.alt = img.alt;
-      fullscreenContainer.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // désactive scroll page
+  <!-- KPI -->
+  <section id="kpi" class="kpi">
+    <div class="kpi-grid">
+      <div class="kpi-card"><strong>26 ANNÉES</strong><span>d’expérience</span></div>
+      <div class="kpi-card"><strong>30+</strong><span>collaborateurs</span></div>
+      <div class="kpi-card"><strong>250</strong><span>projets en 2024</span></div>
+    </div>
+  </section>
+
+  <main role="main">
+    <!-- Atelier -->
+    <section id="atelier" class="fade-in">
+      <h2>L'atelier</h2>
+      <p>
+        Situé à La Chaussée-Tirancourt, notre atelier est équipé pour tous types de travaux : découpe, soudure, pliage…<br />
+        Nous disposons d'une cisaille, d'une scie à ruban, de deux presses-plieuses, d'une poinçonneuse pour la mise en forme.<br />
+        Pour le soudage, nous possédons deux postes MIG et un poste TIG AC/DC.<br />
+        Pour la finition, nous avons une cabine de peinture, ainsi que la possibilité de passiver les pièces inox.
+      </p>
+      <p><a href="atelier-photos.html" target="_blank" rel="noopener" style="color:var(--teal); font-weight:600;">Voir les photos de l'atelier</a></p>
+    </section>
+
+    <!-- Prestations (remplace l’ancienne liste services) -->
+    <section id="services" class="split fade-in">
+      <div class="split-col card-dark">
+        <img src="image/atelier_soudure.jpg" alt="Opération de soudure en atelier" />
+      </div>
+      <div class="split-col card-dark">
+        <h2>Nos prestations</h2>
+        <ul class="ticks">
+          <li>Soudure inox, acier, aluminium</li>
+          <li>Découpe et pliage sur mesure</li>
+          <li>Fabrication de structures métalliques</li>
+          <li>Peinture & finition inox</li>
+          <li>Passivation pièces inox</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Habilitations -->
+    <section id="habilitations" class="split fade-in">
+      <div class="split-col card-dark">
+        <h2>Nos habilitations</h2>
+        <ul class="ticks">
+          <li>Espaces confinés</li>
+          <li>CACES</li>
+          <li>Échafaudage</li>
+          <li>SST</li>
+          <li>COFREND 2</li>
+        </ul>
+      </div>
+      <div class="split-col card-dark center">
+        <img src="image/picto_check.png" alt="" style="max-width:360px;width:100%;height:auto;">
+      </div>
+    </section>
+
+    <!-- Zones d’intervention -->
+    <section id="zones" class="zones fade-in">
+      <div class="zones-inner">
+        <h2>Zones d’intervention</h2>
+        <p>Basée à La Chaussée-Tirancourt, CS2T intervient aux alentours d'Amiens et d'Abbeville.</p>
+      </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie" class="fade-in">
+      <h2>Galerie</h2>
+      <div class="carousel-container">
+        <button class="carousel-btn prev" aria-label="Précédent">⟨</button>
+        <div class="carousel-track">
+          <figure>
+            <img src="image/carter_inox.jpeg" alt="Carter de protection en inox" loading="lazy" decoding="async" width="1200" height="800" />
+            <figcaption>Carter de protection en inox</figcaption>
+          </figure>
+          <figure>
+            <img src="image/garde-corps_volute.jpeg" alt="Garde-corps en fer forgé voluté" loading="lazy" decoding="async" width="1200" height="800" />
+            <figcaption>Garde-corps en fer forgé voluté</figcaption>
+          </figure>
+          <figure>
+            <img src="image/support_moule.jpg" alt="Support de moule" loading="lazy" decoding="async" width="1200" height="800" />
+            <figcaption>Support de moule</figcaption>
+          </figure>
+          <figure>
+            <img src="image/grille_goodyear.jpg" alt="Grille extérieure galvanisée" loading="lazy" decoding="async" width="1200" height="800" />
+            <figcaption>Grille extérieure galvanisée</figcaption>
+          </figure>
+        </div>
+        <button class="carousel-btn next" aria-label="Suivant">⟩</button>
+      </div>
+    </section>
+
+    <!-- Cartes “En savoir plus” -->
+    <section id="plus" class="cards fade-in">
+      <article class="card">
+        <img src="image/histoire.jpg" alt="" />
+        <div class="card-body">
+          <h3>Notre histoire & valeurs</h3>
+          <p>Découvrez l’histoire familiale de CS2T et ce qui guide nos projets.</p>
+          <a class="btn-cta" href="#atelier">En savoir plus →</a>
+        </div>
+      </article>
+      <article class="card">
+        <img src="image/activites.jpg" alt="" />
+        <div class="card-body">
+          <h3>Nos activités</h3>
+          <p>Chaudronnerie, tuyauterie et maintenance : nos savoir-faire clés.</p>
+          <a class="btn-cta" href="#services">En savoir plus →</a>
+        </div>
+      </article>
+      <article class="card">
+        <img src="image/galerie.jpg" alt="" />
+        <div class="card-body">
+          <h3>Photos & vidéos</h3>
+          <p>Nos chantiers et réalisations en images.</p>
+          <a class="btn-cta" href="#galerie">En savoir plus →</a>
+        </div>
+      </article>
+      <article class="card">
+        <img src="image/contact.jpg" alt="" />
+        <div class="card-body">
+          <h3>Un projet ?</h3>
+          <p>Échangeons et obtenez un devis clair sous 48h.</p>
+          <a class="btn-cta" href="#contact">Contactez-nous →</a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="fade-in">
+      <h2>Contactez-nous</h2>
+      <form action="https://formspree.io/f/mwpqeljj" method="POST">
+        <label for="nom">Nom :</label><br />
+        <input type="text" id="nom" name="nom" autocomplete="name" required /><br />
+        <label for="email">Email :</label><br />
+        <input type="email" id="email" name="email" autocomplete="email" inputmode="email" required /><br />
+        <label for="objet">Objet :</label><br />
+        <select id="objet" name="objet" required>
+          <option value="">-- Choisir un objet --</option>
+          <option value="demande-devis">Demande de devis</option>
+          <option value="infos-techniques">Informations techniques</option>
+          <option value="prise-rdv">Prise de rendez-vous</option>
+          <option value="autre">Autre</option>
+        </select><br />
+        <label for="message">Message :</label><br />
+        <textarea id="message" name="message" rows="5" required></textarea><br />
+        <input type="text" name="_gotcha" style="display:none">
+        <input type="hidden" name="_subject" value="Message depuis le site CS2T">
+        <input type="hidden" name="_language" value="fr">
+        <button type="submit">Envoyer</button>
+      </form>
+
+      <div class="infos-contact">
+        <p>📞 Téléphone : <a href="tel:0322528546">03 22 52 58 46</a></p>
+        <p>✉️ Email : <a href="mailto:cs2t@orange.fr">cs2t@orange.fr</a></p>
+        <p>📍 Adresse : 4 rue Vignacourt, 80310 La Chaussée-Tirancourt</p>
+        <p>🕒 Horaires d’ouverture :</p>
+        <ul class="horaires">
+          <li>Lundi – Vendredi : 08h00 – 17h00</li>
+          <li>Samedi et Dimanche : Fermé</li>
+        </ul>
+        <iframe 
+          src="https://www.google.com/maps?q=4+rue+Vignacourt,+80310+La+Chaussée+Tirancourt&output=embed"
+          width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </main>
+
+  <!-- Lightbox plein écran (pour la galerie du main si besoin) -->
+  <div id="fullscreenContainer" aria-hidden="true">
+    <button id="btnQuitterPleinEcran" aria-label="Fermer">✖</button>
+    <img id="fullscreenImage" src="" alt="" />
+    <p id="fullscreenCaption"></p>
+  </div>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>&copy; <span id="copyright-year"></span> SARL CS2T. Tous droits réservés.</p>
+  </footer>
+
+  <!-- Bouton haut de page -->
+  <button id="btnScrollTop" title="Remonter" aria-label="Remonter">↑</button>
+
+  <script>
+    // ===================== ANIMATION D'OUVERTURE =====================
+    window.addEventListener("load", () => {
+      const overlay = document.getElementById("loading-overlay");
+      if (overlay) {
+        overlay.style.opacity = "0";
+        setTimeout(() => { overlay.style.display = "none"; }, 1000);
+      }
     });
-  });
 
-  // Quand on clique sur le bouton fermer, on masque la superposition
-  btnQuitter.addEventListener('click', () => {
-    fullscreenContainer.style.display = 'none';
-    fullscreenImage.src = '';
-    fullscreenImage.alt = '';
-    document.body.style.overflow = ''; // réactive scroll page
-  });
+    // Tout le reste une fois le DOM prêt
+    document.addEventListener('DOMContentLoaded', () => {
+      // ===================== BOUTON HAUT DE PAGE =====================
+      const btnScrollTop = document.getElementById('btnScrollTop');
+      if (btnScrollTop) {
+        window.addEventListener('scroll', () => {
+          btnScrollTop.style.display = window.scrollY > 200 ? 'block' : 'none';
+        });
+        btnScrollTop.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
 
-  // Clic sur le fond noir pour fermer aussi
-  fullscreenContainer.addEventListener('click', (e) => {
-    if (e.target === fullscreenContainer) {
-      btnQuitter.click();
-    }
-  });
-</script>
+      // ===================== ANNÉE DYNAMIQUE =====================
+      const y = document.getElementById('copyright-year');
+      if (y) y.textContent = new Date().getFullYear();
+
+      // ===================== EFFET FADE-IN =====================
+      const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-visible');
+            fadeObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+      // ===================== CARROUSEL =====================
+      const track = document.querySelector('.carousel-track');
+      const prevBtn = document.querySelector('.carousel-btn.prev');
+      const nextBtn = document.querySelector('.carousel-btn.next');
+      const carouselImages = document.querySelectorAll('.carousel-track img');
+      let index = 0;
+
+      function updateCarousel() {
+        if (!carouselImages.length || !track) return;
+        const slideWidth = carouselImages[0].clientWidth;
+        track.style.transform = `translateX(-${index * slideWidth}px)`;
+      }
+
+      let autoSlide = null;
+      function startAuto() {
+        if (autoSlide) clearInterval(autoSlide);
+        autoSlide = setInterval(() => {
+          index = (index + 1) % carouselImages.length;
+          updateCarousel();
+        }, 5000);
+      }
+      if (carouselImages.length) {
+        startAuto();
+        window.addEventListener('resize', updateCarousel);
+        if (prevBtn) prevBtn.addEventListener('click', () => {
+          index = (index - 1 + carouselImages.length) % carouselImages.length;
+          updateCarousel(); startAuto();
+        });
+        if (nextBtn) nextBtn.addEventListener('click', () => {
+          index = (index + 1) % carouselImages.length;
+          updateCarousel(); startAuto();
+        });
+      }
+
+      // ===================== LIGHTBOX (si utilisée pour la galerie) =====================
+      const fullscreenContainer = document.getElementById('fullscreenContainer');
+      const fullscreenImage = document.getElementById('fullscreenImage');
+      const fullscreenCaption = document.getElementById('fullscreenCaption');
+      const btnQuitter = document.getElementById('btnQuitterPleinEcran');
+
+      const lightboxTargets = [
+        ...document.querySelectorAll('.carousel-track img'),
+        ...document.querySelectorAll('.imagePleinEcran')
+      ];
+      lightboxTargets.forEach(img => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => {
+          if (!fullscreenContainer || !fullscreenImage) return;
+          fullscreenImage.src = img.src;
+          if (fullscreenCaption) fullscreenCaption.textContent = img.alt || "Image";
+          fullscreenContainer.style.display = 'flex';
+          if (fullscreenContainer.requestFullscreen) fullscreenContainer.requestFullscreen();
+        });
+      });
+
+      if (btnQuitter) {
+        btnQuitter.addEventListener('click', () => {
+          if (document.exitFullscreen) document.exitFullscreen();
+          if (fullscreenContainer) fullscreenContainer.style.display = 'none';
+          if (fullscreenImage) fullscreenImage.src = '';
+        });
+      }
+
+      document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && fullscreenContainer) {
+          fullscreenContainer.style.display = 'none';
+          if (fullscreenImage) fullscreenImage.src = '';
+        }
+      });
+
+      // ===================== SURBRILLANCE DU LIEN ACTIF =====================
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = document.querySelectorAll('nav a');
+      const accueilAnchor = document.getElementById('accueil');
+      const toObserve = [...sections];
+      if (accueilAnchor) toObserve.unshift(accueilAnchor);
+
+      const addActive = (id) => {
+        navLinks.forEach(a => a.classList.remove('active'));
+        const link = document.querySelector(`nav a[href="#${id}"]`);
+        if (link) link.classList.add('active');
+      };
+
+      const spy = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.getAttribute('id');
+            if (id) addActive(id);
+          }
+        });
+      }, { threshold: 0.6 });
+      toObserve.forEach(el => spy.observe(el));
+    });
+  </script>
 </body>
 </html>
