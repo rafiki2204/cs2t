@@ -81,6 +81,30 @@
       background: var(--teal); transform: scaleX(0); transform-origin: left; transition: transform .25s ease;
     }
     nav a:hover::after{ transform: scaleX(1); }
+    <!-- HERO -->
+<section id="hero" class="hero">
+  <!-- Option A : image de fond -->
+  <!-- <div class="hero-bg" style="background-image:url('image/hero_soudure.jpg')"></div> -->
+  <!-- Option B : vidéo de fond -->
+  <video class="hero-bg" autoplay muted loop playsinline>
+    <source src="video/soudure.mp4" type="video/mp4">
+  </video>
+
+  <div class="hero-inner">
+    <h1>Experts en chaudronnerie et tuyauterie pour l’agroalimentaire</h1>
+    <div class="hero-actions">
+      <a href="#atelier" class="btn-cta">Découvrez-nous</a>
+    </div>
+  </div>
+</section>
+    <!-- KPI -->
+<section id="kpi" class="kpi">
+  <div class="kpi-grid">
+    <div class="kpi-card"><strong>26 ANNÉES</strong><span>d’expérience</span></div>
+    <div class="kpi-card"><strong>30+</strong><span>collaborateurs</span></div>
+    <div class="kpi-card"><strong>250</strong><span>projets en 2024</span></div>
+  </div>
+</section>
 
     /* ===================== Sections ===================== */
     main section {
@@ -104,13 +128,44 @@
     .fade-in-visible { opacity: 1; transform: translateY(0); }
 
     /* ===================== Services ===================== */
-    .services-list {
-      display: flex; flex-wrap: wrap; gap: 18px; list-style: none; padding: 0; margin: 0;
-    }
-    .services-list li {
-      background: #f7fafc; border:1px solid #e9eef3; padding: 12px 14px; border-radius: 8px;
-    }
+    <section id="services" class="split">
+  <div class="split-col card-dark">
+    <img src="image/atelier_soudure.jpg" alt="Opération de soudure en atelier" />
+  </div>
 
+  <div class="split-col card-dark">
+    <h2>Nos prestations</h2>
+    <ul class="ticks">
+      <li>Soudure inox, acier, aluminium</li>
+      <li>Découpe et pliage sur mesure</li>
+      <li>Fabrication de structures métalliques</li>
+      <li>Peinture & finition inox</li>
+      <li>Passivation pièces inox</li>
+    </ul>
+  </div>
+</section>
+
+<section id="habilitations" class="split">
+  <div class="split-col card-dark">
+    <h2>Nos habilitations</h2>
+    <ul class="ticks">
+      <li>Espaces confinés</li>
+      <li>CACES</li>
+      <li>Échafaudage</li>
+      <li>SST</li>
+      <li>COFREND 2</li>
+    </ul>
+  </div>
+  <div class="split-col card-dark center">
+    <img src="image/picto_check.png" alt="" style="max-width:360px;width:100%;height:auto;">
+  </div>
+</section>
+    <section id="zones" class="zones">
+  <div class="zones-inner">
+    <h2>Zones d’intervention</h2>
+    <p>Basée à La Chaussée-Tirancourt , CS2T intervient aux alentours d'Amiens et d'Abbeville.</p>
+  </div>
+</section>
     /* ===================== Galerie / Carrousel ===================== */
     .carousel-container {
       position: relative;
@@ -155,6 +210,40 @@
     }
     #fullscreenImage { max-height: 80vh; max-width: 90vw; border-radius: 10px; }
     #fullscreenCaption { color:#fff; margin-top: 12px; font-size: 1.05rem; text-align: center; }
+    <section id="plus" class="cards">
+  <article class="card">
+    <img src="image/histoire.jpg" alt="" />
+    <div class="card-body">
+      <h3>Notre histoire & valeurs</h3>
+      <p>Découvrez l’histoire familiale de CS2T et ce qui guide nos projets.</p>
+      <a class="btn-cta" href="#atelier">En savoir plus →</a>
+    </div>
+  </article>
+  <article class="card">
+    <img src="image/activites.jpg" alt="" />
+    <div class="card-body">
+      <h3>Nos activités</h3>
+      <p>Chaudronnerie, tuyauterie et maintenance : nos savoir-faire clés.</p>
+      <a class="btn-cta" href="#services">En savoir plus →</a>
+    </div>
+  </article>
+  <article class="card">
+    <img src="image/galerie.jpg" alt="" />
+    <div class="card-body">
+      <h3>Photos & vidéos</h3>
+      <p>Nos chantiers et réalisations en images.</p>
+      <a class="btn-cta" href="#galerie">En savoir plus →</a>
+    </div>
+  </article>
+  <article class="card">
+    <img src="image/contact.jpg" alt="" />
+    <div class="card-body">
+      <h3>Un projet ?</h3>
+      <p>Échangeons et obtenez un devis clair sous 48h.</p>
+      <a class="btn-cta" href="#contact">Contactez-nous →</a>
+    </div>
+  </article>
+</section>
 
     /* ===================== Formulaire ===================== */
     form label { font-weight: 600; color:#333; }
@@ -522,3 +611,4 @@
   </script>
 </body>
 </html>
+
