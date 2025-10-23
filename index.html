@@ -24,32 +24,42 @@
     </div>
   </div>
 
-  <!-- Header -->
-  <header role="banner">
-    <div class="logo" aria-hidden="true">
-      <svg width="120" height="40" viewBox="0 0 300 100" xmlns="http://www.w3.org/2000/svg">
-        <rect width="300" height="100" fill="#3498db" />
-        <text x="40" y="90" font-family="Arial Black, sans-serif" font-size="48" fill="#ffffff">C</text>
-        <text x="90" y="70" font-family="Arial Black, sans-serif" font-size="36" fill="#ffffff">S</text>
-        <text x="140" y="50" font-family="Arial Black, sans-serif" font-size="26" fill="#ffffff">2</text>
-        <text x="180" y="30" font-family="Arial Black, sans-serif" font-size="20" fill="#ffffff">T</text>
-      </svg>
+<!-- HEADER TOPBAR -->
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <!-- Logo -->
+    <a class="brand" href="#accueil" aria-label="Accueil CS2T">
+      <!-- garde ton SVG si tu veux -->
+      <img src="image/logo_cs2t.svg" alt="CS2T" onerror="this.style.display='none'">
+      <span class="brand-text">CS2T</span>
+    </a>
+
+    <!-- Nav principale -->
+    <nav class="mainnav" role="navigation" aria-label="Navigation principale">
+      <ul>
+        <li><a href="#accueil">Accueil</a></li>
+        <li class="has-dropdown">
+          <a href="#atelier" aria-haspopup="true" aria-expanded="false">À propos</a>
+          <ul class="dropdown" aria-label="Sous-menu À propos">
+            <li><a href="atelier-photos.html">Notre histoire & valeurs</a></li>
+            <li><a href="#services">Nos activités</a></li>
+            <li><a href="#galerie">Nos photos & vidéos</a></li>
+          </ul>
+        </li>
+        <li><a href="#services">Nos services</a></li>
+        <li><a href="#galerie">Actualités</a></li>
+        <li><a href="#contact">Recrutement</a></li>
+      </ul>
+    </nav>
+
+    <!-- Actions droites -->
+    <div class="nav-right">
+      <button class="icon-btn" aria-label="Rechercher">🔍</button>
+      <button class="lang-btn" aria-haspopup="listbox" aria-expanded="false">Français ▾</button>
+      <a class="cta" href="#contact">Contactez-nous</a>
     </div>
-    <h1>SARL CS2T</h1>
-    <p>Chaudronnerie & savoir-faire métallique</p>
-  </header>
-
-  <!-- Ancre accueil pour le lien du menu -->
-  <div id="accueil" aria-hidden="true"></div>
-
-  <!-- Navigation -->
-  <nav role="navigation" aria-label="Navigation principale">
-    <a href="#accueil">Accueil</a>
-    <a href="#atelier">L'atelier</a>
-    <a href="#services">Nos services</a>
-    <a href="#galerie">Galerie</a>
-    <a href="#contact">Contact</a>
-  </nav>
+  </div>
+</header>
 
   <!-- HERO -->
   <section id="hero" class="hero">
@@ -378,6 +388,7 @@
   </script>
 </body>
 </html>
+
 
 
 
