@@ -11,7 +11,31 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
-
+<script>
+  // Ouvrir/fermer le dropdown À propos au clic (utile tactile)
+  document.querySelectorAll('.has-dropdown > a').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      const li = trigger.parentElement;
+      const drop = li.querySelector('.dropdown');
+      const open = drop && getComputedStyle(drop).display !== 'none';
+      // fermer les autres
+      document.querySelectorAll('.has-dropdown .dropdown').forEach(d => d.style.display='none');
+      // toggle courant
+      if (drop) {
+        e.preventDefault();
+        drop.style.display = open ? 'none' : 'flex';
+        trigger.setAttribute('aria-expanded', String(!open));
+      }
+    });
+  });
+  // fermer si clic en dehors
+  document.addEventListener('click', (e)=>{
+    if (!e.target.closest('.has-dropdown')) {
+      document.querySelectorAll('.has-dropdown .dropdown').forEach(d => d.style.display='none');
+      document.querySelectorAll('.has-dropdown > a').forEach(a => a.setAttribute('aria-expanded','false'));
+    }
+  });
+</script>
 <body>
   <!-- Skip to content -->
   <a class="skip-link" href="#accueil">Passer au contenu</a>
@@ -388,6 +412,7 @@
   </script>
 </body>
 </html>
+
 
 
 
