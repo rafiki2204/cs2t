@@ -53,35 +53,39 @@ section{
 /* ===========================================================
    HERO
    =========================================================== */
+section.hero, #hero.hero {
+  max-width: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+
 .hero {
   position: relative;
-  width: 100vw; /* ✅ prend toute la largeur de la fenêtre */
-  min-height: 100vh; /* ✅ prend toute la hauteur de l’écran */
-  overflow: hidden;
+  min-height: 100vh;           /* plein écran en hauteur */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
-  isolation: isolate;
+  isolation: isolate;          /* gère bien les z-index */
+  overflow: hidden;
 }
 
-/* Image de fond plein écran */
 .hero-bg {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('image/soudure.jpg');
-  background-size: cover; /* ✅ adapte à la taille de la fenêtre */
-  background-position: center center;
+  inset: 0;
+  background-image: url('image/soudure.jpg'); /* ou mets l’URL que tu veux */
+  background-size: cover;      /* couvre toute la largeur */
+  background-position: center;
   background-repeat: no-repeat;
-  filter: brightness(0.55); /* ✅ voile sombre */
+  filter: brightness(.55);
   z-index: 0;
 }
 
-/* Contenu au-dessus */
 .hero-inner {
   position: relative;
   z-index: 1;
@@ -92,8 +96,8 @@ section{
 .hero h1 {
   font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 800;
+  line-height: 1.25;
   margin-bottom: 24px;
-  line-height: 1.3;
 }
 
 .btn-cta {
@@ -309,6 +313,7 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
 
 
 
