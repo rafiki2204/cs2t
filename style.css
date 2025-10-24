@@ -65,7 +65,7 @@ section.hero, #hero.hero {
 
 .hero {
   position: relative;
-  min-height: 100vh;           /* plein écran en hauteur */
+  min-height: 80vh;           /* plein écran en hauteur */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,7 +89,7 @@ section.hero, #hero.hero {
 .hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 1000px;
+  max-width: 200px;
   padding: 0 20px;
 }
 
@@ -313,6 +313,7 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
 
 
 
