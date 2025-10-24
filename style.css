@@ -65,42 +65,44 @@ section.hero, #hero.hero {
 
 .hero {
   position: relative;
-   height: 80vh
-  min-height: 400px;
-   max-height:800px; /* plein écran en hauteur */
+  /* 👉 on force une hauteur: bandeau compact et responsive */
+  height: 55vh;            /* <= change cette valeur si tu veux (ex: 50vh, 45vh, 60vh) */
+  min-height: 420px;       /* garde une base sur petits écrans */
+  max-height: 720px;       /* évite les bandes trop hautes sur très grands écrans */
   display: flex;
   align-items: center;
   justify-content: center;
   text-align: center;
   color: #fff;
-  isolation: isolate;          /* gère bien les z-index */
+  isolation: isolate;
   overflow: hidden;
 }
 
 .hero-bg {
- position: absolute; 
-   inset: 0;
-   background-image: url('image/soudure.jpg');
- background-size: cover;
-   background-position: center;
-   background-repeat: no-repeat;
-   filter: brightness(.55);
-   z-index: 0;
+  position: absolute;
+  inset: 0;
+  background-image: url('image/soudure.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: brightness(.55);
+  z-index: 0;
 }
 
 .hero-inner {
- position: relative;
-   z-index: 1;
-   max-width: 1000px;
-   width: 90%;
-   padding: 0 20px;
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;       /* large pour éviter les retours à la ligne inutiles */
+  width: min(92%, 1100px);
+  padding: 0;              /* pas de padding vertical parasite */
 }
 
 .hero h1 {
- font-size: clamp(2rem, 4vw, 3rem);
-   font-weight: 800; 
-   line-height: 1.25; 
-   margin-bottom: 24px; }
+  margin: 0 0 18px;        /* supprime la marge-top par défaut du h1 */
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  line-height: 1.15;
+  text-wrap: balance;      /* limite à 1–2 lignes de façon élégante */
+  white-space: normal;     /* le texte peut s’étaler sur la largeur */
 }
 
 .btn-cta {
@@ -119,6 +121,10 @@ section.hero, #hero.hero {
   transform: scale(1.05);
 }
 
+/* Option: encore plus compact sur mobile */
+@media (max-width: 700px){
+  .hero { height: 48vh; min-height: 380px; }
+}
 /* ===========================================================
    KPI
    =========================================================== */
@@ -316,6 +322,7 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
 
 
 
