@@ -2,12 +2,12 @@
    RESET & VARIABLES
    =========================================================== */
 :root{
-  --blue:#3498db;         /* bleu électrique */
-  --blue-dark:#2980b9;    /* bleu foncé/nav */
-  --teal:#1abc9c;         /* accent */
-  --text:#2c3e50;         /* texte principal */
-  --muted:#555;           /* détails/légendes */
-  --bg:#ffffff;           /* fond */
+  --blue:#3498db;
+  --blue-dark:#2980b9;
+  --teal:#1abc9c;
+  --text:#2c3e50;
+  --muted:#555;
+  --bg:#ffffff;
   --shadow:0 3px 12px rgba(0,0,0,.08);
   --radius:12px;
 }
@@ -33,34 +33,13 @@ h2{
 }
 
 /* ===========================================================
-   HEADER
+   (ANCIEN HEADER/NAV DÉSACTIVÉS POUR ÉVITER LES CONFLITS)
    =========================================================== */
-header{
-  background-color:var(--blue);color:#fff;padding:40px 20px 28px;text-align:center;
-}
-header h1{margin:6px 0 4px;font-size:clamp(1.6rem,2.8vw,2.2rem);letter-spacing:.5px;}
-header p{margin:0;color:#dce3ea;}
-.logo{display:flex;justify-content:center;align-items:center;margin-bottom:8px;}
-.logo svg{max-width:100%;height:auto;display:block;}
-
-/* ===========================================================
-   NAVIGATION
-   =========================================================== */
-nav{
-  position:sticky;top:0;z-index:1000;background:var(--blue-dark);
-  display:flex;justify-content:center;gap:14px;padding:12px 10px;
-  box-shadow:0 2px 6px rgba(0,0,0,.15);
-}
-nav a{
-  position:relative;color:#fff;text-decoration:none;font-weight:600;
-  padding:8px 14px;border-radius:6px;transition:background .25s ease,color .25s ease;
-}
-nav a.active{background:rgba(26,188,156,0.18);}
-nav a::after{
-  content:"";position:absolute;left:14px;right:14px;bottom:6px;height:2px;
-  background:var(--teal);transform:scaleX(0);transform-origin:left;transition:transform .25s ease;
-}
-nav a:hover::after{transform:scaleX(1);}
+/* Si tu veux les réactiver un jour, renomme le sélecteur et l’élément HTML. */
+/*
+header{ background:var(--blue); color:#fff; padding:40px 20px; text-align:center; }
+nav{ position:sticky; top:0; background:var(--blue-dark); ... }
+*/
 
 /* ===========================================================
    SECTIONS GÉNÉRIQUES
@@ -121,13 +100,13 @@ section{
 .card .btn-cta:hover{background:#1e70bf}
 
 /* ===========================================================
-   LISTE SERVICES (si tu veux garder l’ancienne section ailleurs)
+   LISTE SERVICES (si tu gardes une ancienne section ailleurs)
    =========================================================== */
 .services-list{display:flex;flex-wrap:wrap;gap:18px;list-style:none;padding:0;margin:0;}
 .services-list li{background:#f7fafc;border:1px solid #e9eef3;padding:12px 14px;border-radius:8px;}
 
 /* ===========================================================
-   GALERIE (grid libre) — autre que carrousel
+   GALERIE (grid libre)
    =========================================================== */
 .galerie-images{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;justify-items:center;}
 .galerie-images img{width:100%;max-width:300px;border-radius:8px;transition:transform .2s ease,box-shadow .2s ease;box-shadow:0 2px 8px rgba(0,0,0,.1);}
@@ -194,22 +173,8 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
 /* ===========================================================
-   RESPONSIVE
+   HEADER TOPBAR (style Manugreg)
    =========================================================== */
-@media (max-width:1024px){
-  .split{grid-template-columns:1fr;}
-  .kpi-grid{grid-template-columns:1fr 1fr;}
-}
-@media (max-width:720px){
-  .kpi-grid{grid-template-columns:1fr;}
-  .cards{grid-template-columns:1fr;}
-}
-@media (max-width:600px){
-  header{padding:28px 16px;}
-  .carousel-btn{font-size:1.6rem;padding:6px 10px;}
-}
-
-* ======== Header topbar style Manugreg ======== */
 .topbar{
   position:sticky; top:0; z-index:1100;
   background:#fff; border-bottom:1px solid #e9eef3;
@@ -250,7 +215,12 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
   padding:10px 12px; border-radius:8px; display:block; color:#1f2d3d;
 }
 .dropdown a:hover{ background:#f6fafc; }
-.has-dropdown:hover .dropdown{ display:flex; }
+
+/* OUVERTURE UNIQUEMENT PAR JS (.open) */
+.topbar .dropdown{display:none !important;}
+.topbar .has-dropdown.open > .dropdown{display:flex !important;}
+/* Neutralise toute ouverture au :hover */
+.topbar .has-dropdown:hover > .dropdown{display:none !important;}
 
 /* Zone droite */
 .nav-right{margin-left:auto; display:flex; align-items:center; gap:12px}
@@ -267,8 +237,22 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 }
 .cta:hover{ background:#159a83; }
 
-/* Dropdown fermé par défaut et ouvert seulement si .open */
-.topbar .dropdown{display:none !important;}
-.topbar .has-dropdown.open > .dropdown{display:flex !important;}
-/* (désactive l'ouverture au hover si tu avais cette règle) */
-.topbar .has-dropdown:hover > .dropdown{display:none;}
+/* ===========================================================
+   RESPONSIVE
+   =========================================================== */
+@media (max-width:1024px){
+  .split{grid-template-columns:1fr;}
+  .kpi-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:980px){
+  .topbar-inner{flex-wrap:wrap}
+  .mainnav ul{flex-wrap:wrap; gap:14px}
+  .nav-right{margin-left:0}
+}
+@media (max-width:720px){
+  .kpi-grid{grid-template-columns:1fr;}
+  .cards{grid-template-columns:1fr;}
+}
+@media (max-width:600px){
+  .carousel-btn{font-size:1.6rem;padding:6px 10px;}
+}
