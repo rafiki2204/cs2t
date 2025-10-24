@@ -65,7 +65,9 @@ section.hero, #hero.hero {
 
 .hero {
   position: relative;
-  min-height: 5vh;           /* plein écran en hauteur */
+   height: 55vh
+  min-height: 420px;
+   max-height:720px; /* plein écran en hauteur */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -89,16 +91,17 @@ section.hero, #hero.hero {
 .hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 1000px;
-   width: 90%;
-  padding: 0 20px;
+  max-width: 1100px;
+   width: min(92%, 1100px);
+  padding: 0 ;
 }
 
 .hero h1 {
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 800;
-  line-height: 1.25;
-  margin-bottom: 24px;
+   margin: 0 0 18px;
+  font-size: clamp(1.9rem, 3vw, 3rem);
+  line-height: 1.15;
+   text-wrap: balance;
+  white-space: normal;
 }
 
 .btn-cta {
@@ -314,6 +317,7 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
 
 
 
