@@ -364,6 +364,62 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
   background:var(--teal); color:#fff; text-decoration:none; padding:10px 16px; border-radius:10px; font-weight:800; box-shadow:0 6px 16px rgba(0,0,0,.08);
 }
 .cta:hover{ background:#159a83; }
+/* ===== Alignement parfait de la topbar ===== */
+:root { --topbar-h: 64px; } /* hauteur cible de la barre */
+
+.topbar-inner{
+  min-height: var(--topbar-h);
+  display: flex;
+  align-items: center;             /* centre tout verticalement */
+  gap: 16px;
+}
+
+/* Groupe gauche / centre / droite tous en flex + centrés */
+.brand,
+.mainnav ul,
+.nav-right{
+  display: flex;
+  align-items: center;
+}
+
+/* Logo : pas d’espace baseline parasite */
+.brand img{ display:block; height:28px; width:auto; }
+
+/* Liens du menu : occupent la hauteur de la barre et sont centrés */
+.mainnav a{
+  display:flex;
+  align-items:center;
+  height: var(--topbar-h);
+  padding: 0 12px;                 /* pas de padding vertical */
+  line-height: 1;                  /* évite les décalages */
+}
+
+/* Soulignement animé repositionné (car plus de padding vertical) */
+.mainnav a::after{
+  bottom: 10px;                    /* ajuste l’épaisseur visuelle */
+}
+
+/* Boutons à droite : mêmes hauteurs, centrés */
+.icon-btn,
+.lang-btn,
+.cta{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height: 40px;                    /* même hauteur pour tous les boutons */
+}
+
+.icon-btn{ width:40px; padding:0; } /* icône ronde */
+.lang-btn{ padding:0 12px; }
+.cta{
+  padding:0 16px;                  /* bouton “Contactez-nous” */
+  border-radius:10px;
+  font-weight:800;
+}
+
+/* Dropdown légèrement décollé de la barre */
+.has-dropdown{ position:relative; }
+.dropdown{ top: calc(100% + 8px); } /* au lieu de coller à 100% pile */
 
 /* ===========================================================
    RESPONSIVE
@@ -385,3 +441,4 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
