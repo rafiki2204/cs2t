@@ -216,11 +216,12 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 }
 .dropdown a:hover{ background:#f6fafc; }
 
-/* OUVERTURE UNIQUEMENT PAR JS (.open) */
-.topbar .dropdown{display:none !important;}
-.topbar .has-dropdown.open > .dropdown{display:flex !important;}
-/* Neutralise toute ouverture au :hover */
-.topbar .has-dropdown:hover > .dropdown{display:none !important;}
+/* OUVERTURE AU SURVOL (pas besoin de JS) */
+.topbar .dropdown{display:none;}
+.topbar .has-dropdown:hover > .dropdown{
+  display:flex;
+  flex-direction:column;
+}
 
 /* Zone droite */
 .nav-right{margin-left:auto; display:flex; align-items:center; gap:12px}
@@ -256,3 +257,4 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
