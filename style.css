@@ -72,7 +72,7 @@ section{
 /* ===========================================================
    BLOCS 2 COLONNES (Prestations / Habilitations)
    =========================================================== */
-.split{max-width:1100px;margin:60px auto;display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:stretch;}
+.split{max-width:1100px;margin:60px auto;display:flex;align-items:center;justify-content:space-between;gap:26px;flex-wrap:nowrap;;}
 .split-col img{display:block;width:100%;height:auto;border-radius:10px;}
 .card-dark{background:#111;color:#fff;border-radius:12px;padding:24px;border:1px solid #222;box-shadow:0 4px 16px rgba(0,0,0,.25);}
 .card-dark h2{border:none;padding:0;margin-top:0;margin-bottom:14px;color:#fff;text-transform:uppercase;}
@@ -257,4 +257,5 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
 
