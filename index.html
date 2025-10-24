@@ -302,7 +302,7 @@
       const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target classList.add('fade-in-visible');
+            entry.target.classList.add('fade-in-visible');
             fadeObserver.unobserve(entry.target);
           }
         });
@@ -374,3 +374,4 @@
   </script>
 </body>
 </html>
+
