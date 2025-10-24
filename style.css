@@ -321,106 +321,148 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
 
 /* ===========================================================
-   HEADER TOPBAR (style Manugreg)
+   HEADER TOPBAR 
    =========================================================== */
-.topbar{
-  position:sticky; top:0; z-index:1100;
-  background:#fff; border-bottom:1px solid #e9eef3;
-  box-shadow:0 2px 6px rgba(0,0,0,.04);
-}
-.topbar-inner{
-  max-width:1180px; margin:0 auto; padding:12px 16px;
-  display:flex; align-items:center; gap:16px;
-}
-.brand{display:flex; align-items:center; gap:10px; text-decoration:none;}
-.brand img{height:28px; width:auto; display:block;}
-.brand-text{font-weight:800; letter-spacing:.5px; color:#111;}
-.mainnav ul{list-style:none; display:flex; gap:22px; margin:0; padding:0;}
-.mainnav a{
-  color:#1f2d3d; text-decoration:none; font-weight:600; padding:8px 2px; position:relative;
-}
-.mainnav a::after{
-  content:""; position:absolute; left:0; right:0; bottom:2px; height:2px;
-  background:var(--teal); transform:scaleX(0); transform-origin:left; transition:transform .22s ease;
-}
-.mainnav a:hover::after{ transform:scaleX(1); }
-.has-dropdown{position:relative}
-.has-dropdown > a{display:inline-flex; align-items:center; gap:6px}
-.dropdown{
-  position:absolute; top:100%; left:0; min-width:240px; background:#fff; border:1px solid #e6ebf2; border-radius:10px;
-  box-shadow:0 12px 28px rgba(0,0,0,.08); display:none; flex-direction:column; padding:8px; z-index:1200;
-}
-.dropdown a{padding:10px 12px; border-radius:8px; display:block; color:#1f2d3d;}
-.dropdown a:hover{ background:#f6fafc; }
-.topbar .dropdown{display:none;}
-.topbar .has-dropdown:hover > .dropdown{display:flex;flex-direction:column;}
-.nav-right{margin-left:auto; display:flex; align-items:center; gap:12px}
-.icon-btn, .lang-btn{
-  background:#f3f6fa; border:1px solid #e6ebf2; color:#2b3440; padding:8px 10px; border-radius:999px; cursor:pointer; font-weight:600;
-}
-.icon-btn{ width:36px; height:36px; display:flex; align-items:center; justify-content:center; padding:0; }
-.icon-btn:hover, .lang-btn:hover{ background:#eaf2fb; }
-.cta{
-  background:var(--teal); color:#fff; text-decoration:none; padding:10px 16px; border-radius:10px; font-weight:800; box-shadow:0 6px 16px rgba(0,0,0,.08);
-}
-.cta:hover{ background:#159a83; }
-/* ===== Alignement parfait de la topbar ===== */
 :root { --topbar-h: 64px; } /* hauteur cible de la barre */
 
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 1100;
+  background: #fff;
+  border-bottom: 1px solid #e9eef3;
+  box-shadow: 0 2px 6px rgba(0,0,0,.04);
+}
+
 .topbar-inner{
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 0 16px;                   /* on supprime le padding vertical */
   min-height: var(--topbar-h);
   display: flex;
-  align-items: center;             /* centre tout verticalement */
+  align-items: center;               /* centre tout verticalement */
   gap: 16px;
 }
 
-/* Groupe gauche / centre / droite tous en flex + centrés */
-.brand,
-.mainnav ul,
-.nav-right{
+/* Logo */
+.brand{
   display: flex;
   align-items: center;
+  gap: 10px;
+  text-decoration: none;
 }
-
-/* Logo : pas d’espace baseline parasite */
 .brand img{ display:block; height:28px; width:auto; }
+.brand-text{ font-weight:800; letter-spacing:.5px; color:#111; }
 
-/* Liens du menu : occupent la hauteur de la barre et sont centrés */
+/* Navigation principale */
+.mainnav ul{
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin: 0;
+  padding: 0;
+}
 .mainnav a{
-  display:flex;
-  align-items:center;
+  display: flex;
+  align-items: center;
   height: var(--topbar-h);
-  padding: 0 12px;                 /* pas de padding vertical */
-  line-height: 1;                  /* évite les décalages */
+  padding: 0 12px;                  /* pas de padding vertical */
+  color: #1f2d3d;
+  text-decoration: none;
+  font-weight: 600;
+  line-height: 1;
+  position: relative;
 }
-
-/* Soulignement animé repositionné (car plus de padding vertical) */
 .mainnav a::after{
-  bottom: 10px;                    /* ajuste l’épaisseur visuelle */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 10px;                     /* ligne bien placée sous le texte */
+  height: 2px;
+  background: var(--teal);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform .22s ease;
 }
+.mainnav a:hover::after{ transform: scaleX(1); }
 
-/* Boutons à droite : mêmes hauteurs, centrés */
+/* Dropdown */
+.has-dropdown{ position: relative; }
+.has-dropdown > a{ display: inline-flex; align-items: center; gap: 6px; }
+.dropdown{
+  position: absolute;
+  top: calc(100% + 8px);            /* léger décalage sous la barre */
+  left: 0;
+  min-width: 240px;
+  background: #fff;
+  border: 1px solid #e6ebf2;
+  border-radius: 10px;
+  box-shadow: 0 12px 28px rgba(0,0,0,.08);
+  display: none;
+  flex-direction: column;
+  padding: 8px;
+  z-index: 1200;
+}
+.dropdown a{
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: block;
+  color: #1f2d3d;
+}
+.dropdown a:hover{ background: #f6fafc; }
+.topbar .has-dropdown:hover > .dropdown{ display: flex; }
+
+/* Zone droite */
+.nav-right{
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
 .icon-btn,
 .lang-btn,
 .cta{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  height: 40px;                    /* même hauteur pour tous les boutons */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;                     /* même hauteur pour tout */
+  border-radius: 999px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid #e6ebf2;
 }
 
-.icon-btn{ width:40px; padding:0; } /* icône ronde */
-.lang-btn{ padding:0 12px; }
+/* Icones & Langue */
+.icon-btn{
+  background: #f3f6fa;
+  color: #2b3440;
+  width: 40px;
+  padding: 0;
+}
+.lang-btn{
+  background: #f3f6fa;
+  color: #2b3440;
+  padding: 0 12px;
+}
+.icon-btn:hover,
+.lang-btn:hover{
+  background: #eaf2fb;
+}
+
+/* Bouton Contact */
 .cta{
-  padding:0 16px;                  /* bouton “Contactez-nous” */
-  border-radius:10px;
-  font-weight:800;
+  background: var(--teal);
+  color: #fff;
+  text-decoration: none;
+  padding: 0 16px;
+  border-radius: 10px;
+  font-weight: 800;
+  box-shadow: 0 6px 16px rgba(0,0,0,.08);
+  border: none;
 }
-
-/* Dropdown légèrement décollé de la barre */
-.has-dropdown{ position:relative; }
-.dropdown{ top: calc(100% + 8px); } /* au lieu de coller à 100% pile */
-
+.cta:hover{ background: #159a83; }
 /* ===========================================================
    RESPONSIVE
    =========================================================== */
@@ -441,4 +483,5 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
 
