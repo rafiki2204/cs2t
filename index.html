@@ -264,26 +264,7 @@
     });
 
     document.addEventListener('DOMContentLoaded', () => {
-      /* --- Dropdown header (ouverture par classe .open) --- */
-      const drops = document.querySelectorAll('.topbar .has-dropdown');
-      drops.forEach(li => {
-        const trigger = li.querySelector(':scope > a');
-        li.classList.remove('open');
-        trigger.addEventListener('click', (e) => {
-          e.preventDefault();
-          const isOpen = li.classList.contains('open');
-          drops.forEach(l => l.classList.remove('open'));
-          if (!isOpen) li.classList.add('open');
-          trigger.setAttribute('aria-expanded', String(!isOpen));
-        });
-      });
-      document.addEventListener('click', (e)=>{
-        if (!e.target.closest('.topbar .has-dropdown')){
-          drops.forEach(l => l.classList.remove('open'));
-          document.querySelectorAll('.topbar .has-dropdown > a').forEach(a => a.setAttribute('aria-expanded','false'));
-        }
-      });
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ drops.forEach(l=>l.classList.remove('open')); } });
+   
 
       /* --- Bouton haut de page --- */
       const btnScrollTop = document.getElementById('btnScrollTop');
@@ -374,4 +355,5 @@
   </script>
 </body>
 </html>
+
 
