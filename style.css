@@ -65,7 +65,7 @@ section.hero, #hero.hero {
 
 .hero {
   position: relative;
-   height: 55vh
+   height: 80vh
   min-height: 420px;
    max-height:720px; /* plein écran en hauteur */
   display: flex;
@@ -317,6 +317,7 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
 
 
 
