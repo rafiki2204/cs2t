@@ -3,75 +3,158 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nos activités – SARL CS2T</title>
-  <meta name="description" content="Découvrez les prestations et activités de CS2T : soudure, chaudronnerie, tuyauterie et fabrication métallique." />
+  <title>Nos compétences – SARL CS2T</title>
+  <meta name="description" content="Découvrez les compétences de CS2T : chaudronnerie, soudage, tuyauterie et fabrication métallique." />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    /* --- Section Hero --- */
+    .hero-competences{
+      position:relative;
+      height:400px;
+      background:url('image/soudure_tig.png') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      overflow:hidden;
+    }
+    .hero-competences::after{
+      content:"";
+      position:absolute; inset:0;
+      background:rgba(0,0,0,0.5);
+    }
+    .hero-competences h1{
+      position:relative;
+      color:#fff;
+      font-size:3rem;
+      font-weight:900;
+      background:rgba(0,0,0,0.65);
+      padding:12px 24px;
+      border-radius:10px;
+      z-index:1;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    /* --- Section texte intro --- */
+    .competences-intro{
+      text-align:center;
+      max-width:900px;
+      margin:60px auto 40px;
+      line-height:1.7;
+    }
+    .competences-intro h2{
+      font-size:2rem;
+      margin-bottom:10px;
+      color:#111;
+      text-transform:uppercase;
+      border:none;
+    }
+
+    /* --- Grille des compétences --- */
+    .competences-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+      gap:30px;
+      max-width:1100px;
+      margin:0 auto 80px;
+      padding:0 20px;
+    }
+    .competence-card{
+      position:relative;
+      overflow:hidden;
+      border-radius:14px;
+    }
+    .competence-card img{
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      transition:transform .4s ease;
+    }
+    .competence-card:hover img{
+      transform:scale(1.05);
+    }
+    .competence-title{
+      position:absolute;
+      bottom:20px; left:20px;
+      background:rgba(0,0,0,0.8);
+      color:#fff;
+      font-weight:800;
+      font-size:1.4rem;
+      padding:6px 14px;
+      border-radius:8px;
+      text-transform:uppercase;
+      letter-spacing:.5px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- HEADER (identique à index.html) -->
+  <!-- HEADER -->
   <header class="topbar" role="banner">
     <div class="topbar-inner">
-      <a class="brand" href="index.html" aria-label="Accueil CS2T">
-        <img src="image/logo_cs2t.svg" alt="CS2T" onerror="this.style.display='none'">
+      <a class="brand" href="index.html">
+        <img src="image/logo_cs2t.svg" alt="CS2T">
         <span class="brand-text">CS2T</span>
       </a>
 
-      <nav class="mainnav" role="navigation">
+      <nav class="mainnav">
         <ul>
           <li><a href="index.html#accueil">Accueil</a></li>
           <li class="has-dropdown">
-            <a href="index.html#atelier" aria-haspopup="true">À propos</a>
+            <a href="index.html#atelier">À propos</a>
             <ul class="dropdown">
               <li><a href="atelier-photos.html">Notre histoire & valeurs</a></li>
-              <li><a href="activites.html">Nos activités</a></li>
+              <li><a href="competences.html">Nos compétences</a></li>
               <li><a href="index.html#galerie">Nos photos & vidéos</a></li>
             </ul>
           </li>
           <li><a href="index.html#contact">Contact</a></li>
         </ul>
       </nav>
+
+      <div class="nav-right">
+        <a href="index.html#contact" class="cta">Contactez-nous</a>
+      </div>
     </div>
   </header>
 
-  <!-- Contenu principal -->
-  <main>
-    <section id="activites" class="fade-in">
-      <h1>Nos activités</h1>
-      <p>
-        SARL CS2T est spécialisée dans la <strong>chaudronnerie</strong>, la <strong>soudure</strong> et la <strong>tuyauterie industrielle</strong>.
-        Nous intervenons sur tout type de métaux : acier, inox et aluminium.
-      </p>
+  <!-- HERO -->
+  <section class="hero-competences">
+    <h1>NOS COMPÉTENCES</h1>
+  </section>
 
-      <div class="split">
-        <div class="split-col card-dark">
-          <h2>Chaudronnerie</h2>
-          <p>Fabrication sur mesure de pièces métalliques, pliage, découpe, perçage et assemblage selon vos plans.</p>
-        </div>
-        <div class="split-col card-dark">
-          <h2>Soudure</h2>
-          <p>Postes TIG et MIG pour des soudures précises sur inox, acier et aluminium.</p>
-        </div>
-      </div>
+  <!-- INTRO -->
+  <section class="competences-intro">
+    <h2>CS2T : Nos Compétences</h2>
+    <p>
+      Les compétences de la société CS2T s’articulent autour de la <strong>chaudronnerie</strong>,
+      du <strong>soudage</strong> et de la <strong>tuyauterie</strong>.
+      Forts de notre savoir-faire, nous réalisons des projets sur mesure pour l'industrie, le bâtiment
+      et les particuliers exigeants.
+    </p>
+  </section>
 
-      <div class="split">
-        <div class="split-col card-dark">
-          <h2>Tuyauterie</h2>
-          <p>Conception et pose de réseaux de tuyauteries industrielles sur mesure, adaptés à vos installations.</p>
-        </div>
-        <div class="split-col card-dark">
-          <h2>Finition</h2>
-          <p>Peinture, passivation et finitions soignées pour une durabilité optimale et un rendu professionnel.</p>
-        </div>
-      </div>
+  <!-- GRILLE DES COMPÉTENCES -->
+  <section class="competences-grid">
+    <div class="competence-card">
+      <img src="image/chaudronnerie.jpg" alt="Chaudronnerie">
+      <span class="competence-title">Chaudronnerie</span>
+    </div>
+    <div class="competence-card">
+      <img src="image/soudage.jpg" alt="Soudage">
+      <span class="competence-title">Soudage</span>
+    </div>
+    <div class="competence-card">
+      <img src="image/tuyauterie.jpg" alt="Tuyauterie">
+      <span class="competence-title">Tuyauterie</span>
+    </div>
+    <div class="competence-card">
+      <img src="image/logo_cs2t_bg.jpg" alt="Logo CS2T">
+      <span class="competence-title">CS2T</span>
+    </div>
+  </section>
 
-      <p style="text-align:center;margin-top:40px;">
-        <a href="index.html#contact" class="btn-cta">Demandez un devis</a>
-      </p>
-    </section>
-  </main>
-
-  <!-- Footer -->
+  <!-- FOOTER -->
   <footer>
     <p>&copy; <span id="copyright-year"></span> SARL CS2T. Tous droits réservés.</p>
   </footer>
@@ -82,6 +165,5 @@
       if(y) y.textContent=new Date().getFullYear();
     });
   </script>
-
 </body>
 </html>
