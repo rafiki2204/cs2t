@@ -69,12 +69,13 @@ section{
 /* Image de fond */
 .hero-bg {
   position: absolute;
-  inset: 0; /* équivaut à top:0; left:0; right:0; bottom:0; */
+  inset: 0;
+  background-image: url('image/soudure.jpg');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  z-index: 0; /* 🔹 reste derrière le texte */
-  filter: brightness(0.55); /* 🔹 voile sombre */
+  z-index: 0;
+  filter: brightness(0.55);
 }
 
 /* Contenu au-dessus */
@@ -304,6 +305,7 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+
 
 
 
