@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nos activités – SARL CS2T</title>
+  <meta name="description" content="Découvrez les prestations et activités de CS2T : soudure, chaudronnerie, tuyauterie et fabrication métallique." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- HEADER (identique à index.html) -->
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <a class="brand" href="index.html" aria-label="Accueil CS2T">
+        <img src="image/logo_cs2t.svg" alt="CS2T" onerror="this.style.display='none'">
+        <span class="brand-text">CS2T</span>
+      </a>
+
+      <nav class="mainnav" role="navigation">
+        <ul>
+          <li><a href="index.html#accueil">Accueil</a></li>
+          <li class="has-dropdown">
+            <a href="index.html#atelier" aria-haspopup="true">À propos</a>
+            <ul class="dropdown">
+              <li><a href="atelier-photos.html">Notre histoire & valeurs</a></li>
+              <li><a href="activites.html">Nos activités</a></li>
+              <li><a href="index.html#galerie">Nos photos & vidéos</a></li>
+            </ul>
+          </li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu principal -->
+  <main>
+    <section id="activites" class="fade-in">
+      <h1>Nos activités</h1>
+      <p>
+        SARL CS2T est spécialisée dans la <strong>chaudronnerie</strong>, la <strong>soudure</strong> et la <strong>tuyauterie industrielle</strong>.
+        Nous intervenons sur tout type de métaux : acier, inox et aluminium.
+      </p>
+
+      <div class="split">
+        <div class="split-col card-dark">
+          <h2>Chaudronnerie</h2>
+          <p>Fabrication sur mesure de pièces métalliques, pliage, découpe, perçage et assemblage selon vos plans.</p>
+        </div>
+        <div class="split-col card-dark">
+          <h2>Soudure</h2>
+          <p>Postes TIG et MIG pour des soudures précises sur inox, acier et aluminium.</p>
+        </div>
+      </div>
+
+      <div class="split">
+        <div class="split-col card-dark">
+          <h2>Tuyauterie</h2>
+          <p>Conception et pose de réseaux de tuyauteries industrielles sur mesure, adaptés à vos installations.</p>
+        </div>
+        <div class="split-col card-dark">
+          <h2>Finition</h2>
+          <p>Peinture, passivation et finitions soignées pour une durabilité optimale et un rendu professionnel.</p>
+        </div>
+      </div>
+
+      <p style="text-align:center;margin-top:40px;">
+        <a href="index.html#contact" class="btn-cta">Demandez un devis</a>
+      </p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; <span id="copyright-year"></span> SARL CS2T. Tous droits réservés.</p>
+  </footer>
+
+  <script>
+    document.addEventListener("DOMContentLoaded",()=>{
+      const y=document.getElementById("copyright-year");
+      if(y) y.textContent=new Date().getFullYear();
+    });
+  </script>
+
+</body>
+</html>
