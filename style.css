@@ -430,3 +430,26 @@ footer{ background:var(--blue-dark); color:#fff; text-align:center; padding:20px
 @media (max-width:600px){
   .carousel-btn{ font-size:1.6rem; padding:6px 10px; }
 }
+
+/* Toujours actifs : pas besoin de hover pour voir la couleur */
+.btn-cta,
+.card .btn-cta {
+  background: var(--teal);    /* vert/bleu clair */
+  color: #fff;
+  text-decoration: none;
+  border-radius: 10px;
+  font-weight: 700;
+  box-shadow: 0 4px 10px rgba(0,0,0,.15); /* petit relief */
+  transition: background .3s ease, transform .3s ease;
+}
+
+/* Effet subtil au survol (facultatif) */
+.btn-cta:hover,
+.card .btn-cta:hover {
+  background: #159a83;       /* nuance plus foncée */
+  transform: scale(1.03);
+}
+.btn-cta,
+.card .btn-cta {
+  box-shadow: 0 0 14px rgba(26, 188, 156, 0.6);
+}
