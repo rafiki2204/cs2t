@@ -483,5 +483,21 @@ footer{background:var(--blue-dark);color:#fff;text-align:center;padding:20px;mar
 @media (max-width:600px){
   .carousel-btn{font-size:1.6rem;padding:6px 10px;}
 }
+.topbar .dropdown{
+  display: none !important;         /* écrase toute règle/inline */
+  visibility: hidden;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity .15s ease, transform .15s ease;
+}
+
+/* --- Ouvrir au survol, au focus clavier, ou si .open est posé (option mobile) --- */
+.topbar .has-dropdown:hover > .dropdown,
+.topbar .has-dropdown:focus-within > .dropdown,
+.topbar .has-dropdown.open > .dropdown{
+  display: flex !important;
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
 
 
