@@ -10,3 +10,36 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <link rel="stylesheet" href="style.css" />
 </head>
+<body>
+
+  <header class="topbar" role="banner">
+    <div class="topbar-inner">
+      <!-- Logo -->
+      <a class="brand" href="#accueil" aria-label="Accueil CS2T">
+        <img src="image/logo2.png" alt="CS2T" onerror="this.style.display='none'">
+      </a>
+
+      <!-- Nav principale -->
+      <nav class="mainnav" role="navigation" aria-label="Navigation principale">
+        <ul>
+          <li><a href="#accueil">Accueil</a></li>
+          <li class="has-dropdown">
+            <a href="#atelier" aria-haspopup="true" aria-expanded="false">À propos de CS2T</a>
+            <ul class="dropdown" aria-label="Sous-menu À propos de CS2T">
+              <li><a href="histoire-et-valeurs.html">Notre histoire & valeurs</a></li>
+              <li><a href="activites.html">Nos compétences</a></li>
+              <li><a href="photos-et-vidéos.html">Nos photos & vidéos</a></li>
+            </ul>
+          </li>
+          <li><a href="#galerie">Actualités</a></li>
+          <li><a href="contact.html">Recrutement</a></li>
+        </ul>
+      </nav>
+
+      <!-- Actions droites -->
+      <div class="nav-right">
+        <a class="cta" href="contact.html">Contactez-nous</a>
+      </div>
+    </div>
+  </header>
+</body>
